@@ -10,26 +10,26 @@
             <div class="container text-center p-5 inter">
                 <h1 class="text-primary mb-5">Check Out</h1>
                 <div class="row step-wizard justify-content-center gap-5">
-                    <div class="col-3 step step-finished d-flex">
+                    <a class="col-3 step step-finished d-flex text-decoration-none">
                         <div class="step-num">
                             <p>1</p>
                         </div>
                         <p class="step-title">Shopping Cart</p>
-                    </div>
+                    </a>
 
-                    <div class="col-3 step step-active d-flex">
+                    <a class="col-3 step step-active d-flex text-decoration-none" >
                         <div class="step-num">
                             <p>2</p>
                         </div>
                         <p class="step-title">Checkout Details</p>
-                    </div>
+                    </a>
 
-                    <div class="col-3 step step-pending disabled d-flex">
+                    <a class="col-3 step step-pending disabled d-flex text-decoration-none">
                         <div class="step-num">
                             <p>3</p>
                         </div>
                         <p class="step-title">Order Complete</p>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="row mt-5 justify-content-center gap-5">

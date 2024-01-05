@@ -40,12 +40,12 @@
                         <div class="collapse navbar-collapse row ms-5 me-5" id="navbarSupportedContent">
                             <ul class="navbar-nav contain col">
                                 <li class="nav-item col">
-                                    <a class="nav-link active link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                                       aria-current="page" href="#">Home</a>
+                                    <a class="nav-link link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover {{ Request::is('/') ? 'active' : '' }}"
+                                       aria-current="page" href="{{asset('/')}}">Home</a>
                                 </li>
 
                                 <li class="nav-item dropdown col">
-                                    <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown"
+                                    <a class="nav-link {{ Request::is('browse') ? 'active' : '' }}" href="{{asset('/browse')}}"
                                        aria-expanded="false">
                                         Jewellery
                                     </a>
@@ -59,20 +59,20 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item col">
-                                    <a class="nav-link" href="#">About us</a>
+                                    <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="{{asset('/about')}}">About us</a>
                                 </li>
                                 <li class="nav-item col">
-                                    <a class="nav-link" href="#">Contact</a>
+                                    <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="{{asset('/contact')}}">Contact</a>
                                 </li>
                             </ul>
                             <div class="col-2 text-center d-none d-lg-block">
-                                <a href="#">
+                                <a href="{{asset('/')}}">
                                     <img src="{{ asset('assets/logo_variant1.png') }}" alt="Logo" width="128" height="128">
                                 </a>
                             </div>
                             <ul class="navbar-nav col text-center">
                                 <li class="nav-item col">
-                                    <a class="nav-link" href="#">IGI Page</a>
+                                    <a class="nav-link {{ Request::is('igi') ? 'active' : '' }}" href="{{asset('/igi')}}">IGI Page</a>
                                 </li>
                                 <form class="m-auto me-2 col-5 d-none d-lg-block" role="search">
                                     <input class="form-control" id="searchbar" type="search" placeholder="Search"
@@ -274,8 +274,8 @@
                                 </div>
 
                                 <div class="d-grid mb-3 d-md-block text-center">
-                                    <button class="btn btn-outline-secondary mx-2 px-4 rounded-5" type="button">Cart</button>
-                                    <button class="btn btn-outline-secondary mx-2 px-4 rounded-5" type="button">Checkout</button>
+                                    <a href="{{ asset('/cart/checkout') }}" class="btn btn-outline-secondary mx-2 px-4 rounded-5" >Cart</a>
+                                    <a href="{{ asset('/cart/checkout') }}" class="btn btn-outline-secondary mx-2 px-4 rounded-5" type="button">Checkout</a>
                                 </div>
                             </div>
 
