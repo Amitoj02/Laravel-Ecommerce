@@ -660,25 +660,37 @@ input[type="search"]::-webkit-search-results-decoration {
     margin: auto 1rem;
 }
 
-.step-wizard .step-finished {
-    color: #38CB89; 
+
+
+.step-wizard a {
+    /* Styles for all tabs */
+    color: #38CB89;
     border-color: #38CB89;
 }
 .step-wizard .step-active {
+    /* Styles for the active tab */
     color: var(--bs-primary);
     border-color: var(--bs-primary);
 }
-.step-wizard .step-pending {
+.step-wizard .step-active ~ a {
+    /* Styles for links following the active step */
     color: #B1B5C3;
     border-color: #B1B5C3;
 }
-.step-wizard .step-finished .step-num{
+
+
+
+
+.step-wizard .step .step-num{
+    /* Styles for all tab nums */
     background-color: #38CB89;
 }
 .step-wizard .step-active .step-num{
+    /* Styles for the active tab num */
     background-color: var(--bs-primary);
 }
-.step-wizard .step-pending .step-num{
+.step-wizard .step-active ~ .step .step-num{
+    /* Styles for links following the active step num */
     background-color: #B1B5C3;
 }
 

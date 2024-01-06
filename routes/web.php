@@ -27,11 +27,11 @@ Route::get('/browse', function () {
 });
 
 Route::get('/cart/checkout', function () {
-    return view('cart-checkout');
+    return view('cart/cart-checkout');
 });
 
 Route::get('/cart/complete', function () {
-    return view('cart-complete');
+    return view('cart/cart-complete');
 });
 
 Route::get('/contact', function () {
