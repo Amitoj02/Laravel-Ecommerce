@@ -12,9 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('catalog_tag', function (Blueprint $table) {
-            $table->foreignId('catalog_id')->constrained();
-            $table->foreignId('tag_id')->constrained();
+            $table->id();
+            $table->unsignedBigInteger('catalog_id');
+            $table->unsignedBigInteger('tag_id');
+            // Add any additional columns if needed
+            $table->timestamps();
+
+            // Define foreign keys
+            $table->foreign('catalog_id')->references('id')->on('catalogs')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });
+
+//        Schema::create('catalog_tag', function (Blueprint $table) {
+//            $table->foreignId('catalog_id')->constrained();
+//            $table->foreignId('tag_id')->constrained();
+//        });
     }
 
     /**
