@@ -2,13 +2,13 @@
 
 namespace App\Filament\Resources\TagResource\Pages;
 
-use App\Filament\Resources\TagResource;
+use App\Filament\Resources\TypeResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListTags extends ListRecords
+class ListTypes extends ListRecords
 {
-    protected static string $resource = TagResource::class;
+    protected static string $resource = TypeResource::class;
 
     protected function getHeaderActions(): array
     {

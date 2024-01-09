@@ -3,8 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TagResource\Pages;
-//use App\Filament\Resources\TagResource\RelationManagers;
-use App\Models\Tag;
+//use App\Filament\Resources\TypeResource\RelationManagers;
+use App\Models\Type;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
@@ -18,9 +18,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
-class TagResource extends Resource
+class TypeResource extends Resource
 {
-    protected static ?string $model = Tag::class;
+    protected static ?string $model = Type::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
@@ -36,11 +36,6 @@ class TagResource extends Resource
                         ->debounce(500)
                         ->required(),
 
-                    TextInput::make('slug')
-                        ->required()
-                        ->unique(ignoreRecord: true)
-                        ->helperText(str('It will be the url path of the tag, it should be unique from other tag\'s slugs.')->markdown()->toHtmlString())
-
                 ]),
             ]);
     }
@@ -53,9 +48,6 @@ class TagResource extends Resource
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('slug')
                     ->searchable()
                     ->sortable()
             ])
@@ -85,9 +77,9 @@ class TagResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTags::route('/'),
-            'create' => Pages\CreateTag::route('/create'),
-            'edit' => Pages\EditTag::route('/{record}/edit'),
+            'index' => Pages\ListTypes::route('/'),
+//            'create' => Pages\CreateType::route('/create'),
+//            'edit' => Pages\EditType::route('/{record}/edit'),
         ];
     }
 }

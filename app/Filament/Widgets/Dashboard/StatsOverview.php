@@ -13,8 +13,7 @@ class StatsOverview extends BaseWidget
         return [
             Stat::make('New Orders', DB::table('orders')->where('status', 'new')->count()),
             Stat::make('Pending Orders', DB::table('orders')->where('status', 'pending')->count()),
-            Stat::make('Out of Stock Products', DB::table('catalogs')->where('quantity', '<=' ,0)->where('visible', true)->count()),
-
+            Stat::make('Catalogs', DB::table('catalogs')->count()),
         ];
     }
 }

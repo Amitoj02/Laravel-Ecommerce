@@ -2,13 +2,13 @@
 
 namespace App\Filament\Resources\TagResource\Pages;
 
-use App\Filament\Resources\TagResource;
+use App\Filament\Resources\TypeResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateTag extends CreateRecord
+class CreateType extends CreateRecord
 {
-    protected static string $resource = TagResource::class;
+    protected static string $resource = TypeResource::class;
 
     protected function getRedirectUrl(): string
     {

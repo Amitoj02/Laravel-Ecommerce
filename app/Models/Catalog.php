@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
@@ -17,27 +18,31 @@ class Catalog extends Model
         'introduction',
         'description',
         'banner',
+        'color',
+        'karat',
+        'material',
+        'type',
         'images',
-        'price',
-        'on_discount',
-        'discount',
-        'discount_old_price',
         'product_code',
-        'instore_available',
-        'online_available',
-        'quantity',
         'visible'
+//        'price',
+//        'on_discount',
+//        'discount',
+//        'discount_old_price',
+//        'instore_available',
+//        'online_available',
+//        'quantity',
     ];
 
     protected $casts = [
         'images' => 'array',
-        'instore_available' => 'boolean',
-        'on_discount' => 'boolean',
-        'online_available' => 'boolean',
         'visible' => 'boolean'
+//        'instore_available' => 'boolean',
+//        'on_discount' => 'boolean',
+//        'online_available' => 'boolean',
     ];
-    public function tags(): BelongsToMany {
-        return $this->belongsToMany(Tag::class);
+    public function type(): BelongsTo {
+        return $this->belongsTo(Type::class);
     }
 
     public function cartItems(): BelongsToMany {

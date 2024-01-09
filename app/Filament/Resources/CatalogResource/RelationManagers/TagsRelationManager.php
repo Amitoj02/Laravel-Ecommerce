@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\CatalogResource\RelationManagers;
 
-use App\Filament\Resources\TagResource;
+use App\Filament\Resources\TypeResource;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -17,12 +17,12 @@ class TagsRelationManager extends RelationManager
 
     public function form(Form $form): Form
     {
-        return TagResource::form($form);
+        return TypeResource::form($form);
     }
 
     public function table(Table $table): Table
     {
-        return TagResource::table($table)
+        return TypeResource::table($table)
             ->recordTitleAttribute('name')
             ->headerActions([
                 Tables\Actions\CreateAction::make(),

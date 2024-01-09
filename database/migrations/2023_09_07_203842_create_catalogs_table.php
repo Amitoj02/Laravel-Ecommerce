@@ -19,19 +19,16 @@ return new class extends Migration
             $table->longText('description');
             $table->string('banner');
             $table->longText('images');
-
-            $table->double('price');
-            $table->boolean('on_discount')->default(0);
-            $table->integer('discount')->default(0);
-            $table->double('discount_old_price')->default(0);
-
-            $table->integer('quantity')->default(0);
+            $table->string('color');
+            $table->string('karat');
+            $table->string('gender');
+            $table->string('material');
+            $table->unsignedBigInteger('type');
             $table->string('product_code')->unique();
-            $table->boolean('instore_available')->default(1);
-            $table->boolean('online_available')->default(1);
             $table->boolean('visible')->default(1);
 
             $table->timestamps();
+            $table->foreign('type')->references('id')->on('types');
         });
     }
 
