@@ -297,7 +297,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 /*Item card*/
 .item-card {
-    margin: 1rem auto 1rem auto;
+    margin: 0.5rem ;
     padding: 0;
     box-shadow: 0 0.1rem 1rem #e3e3e3;
     transition: transform .2s;

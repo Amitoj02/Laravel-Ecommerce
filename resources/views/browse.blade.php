@@ -168,159 +168,36 @@
             <!--Filter section ENDS-->
 
             <div class="col-9">
+
                 <!--Listing header-->
+
                 <div class="row mb-3">
+
                     <div class="col my-auto">
                         <b>Browse Catalogs</b>
                         <small class="text-info">(52 items)</small>
-
                     </div>
+
                     <div class="col-auto">
-                        <div class="form-floating">
-                            <select class="form-select" id="floatingSelect"
-                                    aria-label="Floating label select example">
-                                <option value="popular" selected>Popular</option>
-                                <option value="new">New</option>
-                                <option value="price">Price</option>
-                            </select>
-                            <label for="floatingSelect">Sort By:</label>
-                        </div>
+
+                        <!-- FilterCatalogs Component -->
+                        <livewire:filter-catalogs/>
+
+{{--                        <div class="form-floating">--}}
+{{--                            <select class="form-select" id="floatingSelect"--}}
+{{--                                    aria-label="Floating label select example">--}}
+{{--                                <option value="popular" selected>Popular</option>--}}
+{{--                                <option value="new">New</option>--}}
+{{--                                <option value="price">Price</option>--}}
+{{--                            </select>--}}
+{{--                            <label for="floatingSelect">Sort By:</label>--}}
+{{--                        </div>--}}
+
                     </div>
                 </div>
 
                 <!--Listing STARTS-->
-                <div class="row">
-
-                    <!--Catalog item-->
-                    <div class="col-auto text-center item-card bg-white my-3 mx-auto">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item1.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0 marcellus">STYLISH SILVER EARRINGS</p>
-                            <small class="text-primary inter fw-lighter">Women | Earrings</small>
-                            <br><br>
-                            <div class="d-flex marcellus">
-                                <div class="me-auto text-primary">₹ 6000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Catalog item-->
-                    <div class="col-auto text-center item-card bg-white my-3 mx-auto">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item2.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0 marcellus">STYLISH SILVER EARRINGS</p>
-                            <small class="text-primary inter fw-lighter">Women | Earrings</small>
-                            <br><br>
-                            <div class="d-flex marcellus">
-                                <div class="me-auto text-primary">₹ 6000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Catalog item-->
-                    <div class="col-auto text-center item-card bg-white my-3 mx-auto">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item3.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0 marcellus">STYLISH SILVER EARRINGS</p>
-                            <small class="text-primary inter fw-lighter">Women | Earrings</small>
-                            <br><br>
-                            <div class="d-flex marcellus">
-                                <div class="me-auto text-primary">₹ 6000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Catalog item-->
-                    <div class="col-auto text-center item-card bg-white my-3 mx-auto">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item4.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0 marcellus">STYLISH SILVER EARRINGS</p>
-                            <small class="text-primary inter fw-lighter">Women | Earrings</small>
-                            <br><br>
-                            <div class="d-flex marcellus">
-                                <div class="me-auto text-primary">₹ 6000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Catalog item-->
-                    <div class="col-auto text-center item-card bg-white my-3 mx-auto">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item5.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0 marcellus">STYLISH SILVER EARRINGS</p>
-                            <small class="text-primary inter fw-lighter">Women | Earrings</small>
-                            <br><br>
-                            <div class="d-flex marcellus">
-                                <div class="me-auto text-primary">₹ 6000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Catalog item-->
-                    <div class="col-auto text-center item-card bg-white my-3 mx-auto">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item6.png') }}" class="mx-auto mb-3"
-                                 style="width:200px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0 marcellus">STYLISH SILVER EARRINGS</p>
-                            <small class="text-primary inter fw-lighter">Women | Earrings</small>
-                            <br><br>
-                            <div class="d-flex marcellus">
-                                <div class="me-auto text-primary">₹ 6000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                </div>
+                <livewire:show-catalogs/>
                 <!--Listing ENDS-->
 
                 <nav >

@@ -67,7 +67,7 @@
                     the perfect piece to elevate their styles.</p>
 
                 <!-- Gender cards STARTS -->
-                <div class="row px-5 py-3">
+                <div class="row justify-content-evenly px-5 py-3">
                     <div class="col-md-3 col-12 item-card">
                         <img src="{{ asset('assets/g_1.png') }}" class="w-100" alt="Men">
                         <div class="d-flex">
@@ -98,7 +98,7 @@
                     your style and preferences.</p>
 
                 <div class="container text-center p-5">
-                    <div class="row row-cols-auto row-cols-lg-auto justify-content-md-center">
+                    <div class="row row-cols-auto justify-content-center row-cols-lg-auto justify-content-md-center">
                         <div class="col category-card mx-auto">
                             <img src="{{ asset('assets/catalogs/item1.png') }}" alt="" srcset="">
                             <small>Rings</small>
