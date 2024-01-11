@@ -76,8 +76,8 @@
                                 <li class="nav-item col">
                                     <a class="nav-link {{ Request::is('igi') ? 'active' : '' }}" href="{{asset('/igi')}}">IGI Page</a>
                                 </li>
-                                <form class="m-auto me-2 col-5 d-none d-lg-block" role="search">
-                                    <input class="form-control" id="searchbar" type="search" placeholder="Search"
+                                <form class="m-auto me-2 col-5 d-none d-lg-block" action="/browse" role="search" method="get">
+                                    <input class="form-control" id="searchbar" name="q" type="search" placeholder="Search"
                                            aria-label="Search">
                                 </form>
                                 <li class="col">

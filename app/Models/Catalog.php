@@ -21,7 +21,7 @@ class Catalog extends Model
         'color',
         'karat',
         'material',
-        'type',
+        'type_id',
         'images',
         'product_code',
         'visible'
@@ -42,7 +42,7 @@ class Catalog extends Model
 //        'online_available' => 'boolean',
     ];
     public function type(): BelongsTo {
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Type::class, 'type_id', 'id');
     }
 
     public function cartItems(): BelongsToMany {

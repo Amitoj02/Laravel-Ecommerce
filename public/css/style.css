@@ -213,29 +213,31 @@ input[type="search"]::-webkit-search-results-decoration {
     transform: translateY(-50%);
 }
 
-.cb-red::before {
-    background-color: #FF564F;
+/*
+.cb-white-gold::before {
+    background: linear-gradient(to right, #d5cec0, #dcdcdc);
 }
 
-.cb-apricot::before {
-    background-color: #FFB672;
+.cb-rose-gold::before {
+    background: linear-gradient(to right, #f7d4be, #dcdcdc);
 }
 
-.cb-black::before {
-    background-color: #242B33;
+.cb-yellow-gold::before {
+    background: linear-gradient(to right, #fbe0b5, #dcdcdc);
+}*/
+
+.cb-white-gold::before {
+    background-color: #e1ddd5;
 }
 
-.cb-black-white::before {
-    background: linear-gradient(to right, #242B33, #dcdcdc);
+.cb-rose-gold::before {
+    background-color: #f08e71;
 }
 
-.cb-silver::before {
-    background-color: #CECECE;
+.cb-yellow-gold::before {
+    background-color: #fbe0b5;
 }
 
-.cb-tan::before {
-    background-color: #FFF7CE;
-}
 
 /* Body */
 .bg-gold {

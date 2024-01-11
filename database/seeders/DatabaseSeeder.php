@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
                 'karat' => '14K',
                 'gender' => 'Gents',
                 'material' => 'Gold',
-                'type' => '1',
+                'type_id' => '1',
                 'product_code' => '1234',
                 'visible' => '1'
             ],
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
                 'karat' => '14K',
                 'gender' => 'Gents',
                 'material' => 'Gold',
-                'type' => '2',
+                'type_id' => '2',
                 'product_code' => '1235',
                 'visible' => '2'
             ],
@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
                 'karat' => '14K',
                 'gender' => 'Gents',
                 'material' => 'Gold',
-                'type' => '3',
+                'type_id' => '3',
                 'product_code' => '1236',
                 'visible' => '1'
             ],
@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
                 'karat' => '14K',
                 'gender' => 'Gents',
                 'material' => 'Gold',
-                'type' => '2',
+                'type_id' => '2',
                 'product_code' => '1237',
                 'visible' => '1'
             ],
@@ -101,7 +101,7 @@ class DatabaseSeeder extends Seeder
                 'karat' => '14K',
                 'gender' => 'Gents',
                 'material' => 'Gold',
-                'type' => '3',
+                'type_id' => '3',
                 'product_code' => '1238',
                 'visible' => '1'
             ],

@@ -23,12 +23,12 @@ return new class extends Migration
             $table->string('karat');
             $table->string('gender');
             $table->string('material');
-            $table->unsignedBigInteger('type');
+            $table->unsignedBigInteger('type_id');
             $table->string('product_code')->unique();
             $table->boolean('visible')->default(1);
 
             $table->timestamps();
-            $table->foreign('type')->references('id')->on('types');
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 
