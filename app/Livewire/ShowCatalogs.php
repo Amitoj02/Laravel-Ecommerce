@@ -3,60 +3,69 @@
 namespace App\Livewire;
 
 use App\Models\Catalog;
+use Exception;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ShowCatalogs extends Component
 {
     use WithPagination;
-    public $catalogs;
-//    public $catalogsLink2; //for pagination
+    public $catalogsQuery; //for pagination
+
+    public $type_id = 'all'; //Default
+    public $color, $karat, $gender, $material = [];
+
 
     protected $listeners = ['reloadCatalogs'];
 
     public function mount() {
-        $this->catalogsLink2 = Catalog::Paginate(2);
-        $this->catalogs = collect($this->catalogsLink2->items());
+
     }
 
     public function render()
     {
-//        return view('livewire.show-catalogs');
 
-        $catalogsLink = $this->catalogsLink2;
-        return view('livewire.show-catalogs', ['catalogsLink' => $catalogsLink]);
+        $catalogs = Catalog::query();
 
-//        return view('livewire.show-catalogs', [
-////            'catalogs' => Catalog::paginate(2),
-//            'catalogs' => $this->catalogs,
-//        ]);
+        if($this->type_id != 'all') {
+            $catalogs = $catalogs->where('type_id', $this->type_id);
+        }
+
+        if($this->color) {
+            $catalogs = $catalogs->whereIn('color', $this->color);
+        }
+
+        if($this->karat) {
+            $catalogs = $catalogs->whereIn('karat', $this->karat);
+        }
+
+        if($this->gender) {
+            $catalogs = $catalogs->whereIn('gender', $this->gender);
+        }
+
+        if($this->material) {
+            $catalogs = $catalogs->whereIn('material', $this->material);
+        }
+
+        $catalogs = $catalogs->paginate(2);
+
+        return view('livewire.show-catalogs', [
+            'catalogs' => $catalogs
+        ]);
     }
 
     public function reloadCatalogs($type_id, $color, $karat, $gender, $material) {
-        $this->catalogs = Catalog::query();
 
-        if($type_id != 'all') {
-            $this->catalogs = $this->catalogs->where('type_id', $type_id);
-        }
+        $this->type_id = $type_id;
+        $this->color = $color;
+        $this->karat = $karat;
+        $this->gender = $gender;
+        $this->material = $material;
 
-        if($color) {
-            $this->catalogs = $this->catalogs->whereIn('color', $color);
-        }
+        $this->resetPage();
 
-        if($karat) {
-            $this->catalogs = $this->catalogs->whereIn('karat', $karat);
-        }
-
-        if($gender) {
-            $this->catalogs = $this->catalogs->whereIn('gender', $gender);
-        }
-
-        if($material) {
-            $this->catalogs = $this->catalogs->whereIn('material', $material);
-        }
-
-//        $this->catalogs = $this->catalogs->paginate(2);
-        $this->catalogsLink2 = $this->catalogs->paginate(2);
-        $this->catalogs = collect($this->catalogsLink2->items());
     }
+
 }

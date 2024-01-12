@@ -75,26 +75,26 @@
                 <livewire:show-catalogs/>
                 <!--Listing ENDS-->
 
-                <nav >
-                    <ul class="pagination justify-content-center fw-bold mt-5">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <i data-feather="arrow-left" stroke-width="2"></i>
-                            </a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
-                        <li class="page-item"><a class="page-link" href="#">10</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <i data-feather="arrow-right" stroke-width="2"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+{{--                <nav >--}}
+{{--                    <ul class="pagination justify-content-center fw-bold mt-5">--}}
+{{--                        <li class="page-item">--}}
+{{--                            <a class="page-link" href="#" aria-label="Previous">--}}
+{{--                                <i data-feather="arrow-left" stroke-width="2"></i>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="page-item active"><a class="page-link" href="#">1</a></li>--}}
+{{--                        <li class="page-item"><a class="page-link" href="#">2</a></li>--}}
+{{--                        <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+{{--                        <li class="page-item"><a class="page-link" href="#">4</a></li>--}}
+{{--                        <li class="page-item disabled"><a class="page-link" href="#">...</a></li>--}}
+{{--                        <li class="page-item"><a class="page-link" href="#">10</a></li>--}}
+{{--                        <li class="page-item">--}}
+{{--                            <a class="page-link" href="#" aria-label="Next">--}}
+{{--                                <i data-feather="arrow-right" stroke-width="2"></i>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </nav>--}}
 
             </div>
         </div>

@@ -17,6 +17,7 @@
         </div>
     </div>
 
+
     <div wire:loading.remove class="row" id="catalog-listing">
         @foreach($catalogs as $catalog)
             <div class="col-auto text-center item-card bg-white my-3">
@@ -47,7 +48,9 @@
         </div>
     </div>
 
-    {{ $catalogsLink->links(data: ['scrollTo' => '#catalog-listing']) }}
+
+
+    {{ $catalogs->links(data: ['scrollTo' => '#catalog-listing']) }}
 </div>
 
 
