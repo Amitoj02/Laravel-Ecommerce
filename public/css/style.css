@@ -296,6 +296,14 @@ input[type="search"]::-webkit-search-results-decoration {
     color: #fff;
 }
 
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
 
 /*Item card*/
 .item-card {
@@ -306,8 +314,14 @@ input[type="search"]::-webkit-search-results-decoration {
     /* line-height: 1.5rem; */
 }
 
+
 .item-card:hover {
     transform: scale(1.1);
+}
+
+.item-card:hover .overflowing {
+    animation: marquee 5s linear infinite;
+    animation-play-state: running;
 }
 
 .item-card .view-more {
@@ -354,6 +368,7 @@ input[type="search"]::-webkit-search-results-decoration {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
+
 
 /* Section's leaf backgrounds (other than heropages) */
 .section-leaf1,

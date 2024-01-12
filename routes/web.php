@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,11 +47,7 @@ Route::get('/igi', function () {
     return view('igi');
 })->name('igi');
 
-Route::get('/catalog/{product_code}', function () {
-    return view('item');
-})->name('catalog');
-
-
+Route::get('/catalog/{product_code}', [CatalogController::class, 'show'])->name('catalog');
 
 
 Route::get('/dashboard', function () {

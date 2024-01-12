@@ -85,6 +85,9 @@ class ShowCatalogs extends Component
             $catalogs = $catalogs->where('title', 'LIKE', '%'. $this->search_text . '%');
         }
 
+        $catalogs->where('visible', 'LIKE', '1');
+        $catalogs->orderBy('id', 'DESC');
+
         $catalogs = $catalogs->paginate(16);
         $this->catalogs_count = $catalogs->total();
 

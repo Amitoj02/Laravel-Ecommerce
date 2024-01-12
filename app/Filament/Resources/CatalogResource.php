@@ -86,7 +86,8 @@ class CatalogResource extends Resource
 
                     Grid::make()->schema(
                         [
-                            Select::make('type')
+                            Select::make('type_id')
+                            ->label('Type')
                             ->native(false)
                             ->searchable(true)
                             ->relationship(name: 'type', titleAttribute: 'name')

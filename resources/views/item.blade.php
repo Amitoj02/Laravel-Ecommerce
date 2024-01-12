@@ -13,29 +13,21 @@
                     <div class="col-6">
                         <!--Product gallery-->
                         <div class="slider-galeria-thumbs">
-                            <div><span class="p-2"><img src="{{ asset('assets/catalogs/item1.png') }}" height="55px" class="m-auto"></span></div>
-                            <div><span class="p-2"><img src="{{ asset('assets/catalogs/item1.png') }}" height="55px" class="m-auto"></span></div>
-                            <div><span class="p-2"><img src="{{ asset('assets/catalogs/item1.png') }}" height="55px" class="m-auto"></span></div>
-                            <div><span class="p-2"><img src="{{ asset('assets/catalogs/item1.png') }}" height="55px" class="m-auto"></span></div>
-                            <div><span class="p-2"><img src="{{ asset('assets/catalogs/item1.png') }}" height="55px" class="m-auto"></span></div>
-                            <div><span class="p-2"><img src="{{ asset('assets/catalogs/item1.png') }}" height="55px" class="m-auto"></span></div>
-                            <div><span class="p-2"><img src="{{ asset('assets/catalogs/item1.png') }}" height="55px" class="m-auto"></span></div>
+                            @foreach($catalog->images as $image)
+                                <div><span class="p-2"><img src="{{ asset('storage/' . $image) }}" height="55px" class="m-auto"></span></div>
+                            @endforeach
                         </div>
 
                         <div class="slider-galeria">
-                            <div><span class="p-5"><img src="{{ asset('assets/catalogs/item1.png') }}" width="100%" class="m-auto"></span></div>
-                            <div><span class="p-5"><img src="{{ asset('assets/catalogs/item1.png') }}" width="100%" class="m-auto"></span></div>
-                            <div><span class="p-5"><img src="{{ asset('assets/catalogs/item1.png') }}" width="100%" class="m-auto"></span></div>
-                            <div><span class="p-5"><img src="{{ asset('assets/catalogs/item1.png') }}" width="100%" class="m-auto"></span></div>
-                            <div><span class="p-5"><img src="{{ asset('assets/catalogs/item1.png') }}" width="100%" class="m-auto"></span></div>
-                            <div><span class="p-5"><img src="{{ asset('assets/catalogs/item1.png') }}" width="100%" class="m-auto"></span></div>
-                            <div><span class="p-5"><img src="{{ asset('assets/catalogs/item1.png') }}" width="100%" class="m-auto"></span></div>
+                            @foreach($catalog->images as $image)
+                                <div><span class="p-5"><img src="{{ asset('storage/' . $image) }}" width="100%" class="m-auto"></span></div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-6">
                         <!--Product Titles-->
-                        <p class="mb-1 fs-2">Engagement ring</p>
-                        <p class="mb-1 text-info fs-5">Rs. 250,000.00</p>
+                        <p class="mb-1 fs-2">{{$catalog->title}}</p>
+{{--                        <p class="mb-1 text-info fs-5">Rs. 250,000.00</p>--}}
                         <div class="d-flex">
                             <div class="p-2 fs-5" style="color:#FFC700;">
                                 <i class="fa fa-star"></i>
@@ -48,9 +40,7 @@
                             <p class="text-info mx-0 my-auto small p-2">5 Customer Review</p>
                         </div>
 
-                        <p class="small">Absolutely thrilled with my gold engagement ring! The craftsmanship is
-                            impeccable, and the gold's warmth enhances the sparkle of the stone. A timeless and
-                            stunning symbol of love. Highly recommended!</p>
+                        <p class="small">{{$catalog->introduction}}</p>
                         <div class="row align-items-center pb-2">
                             <div class="col-4 shop-quantity">
                                 <span class="sign minus">-</span>
@@ -67,17 +57,22 @@
                             <tr>
                                 <td>No.</td>
                                 <td>:</td>
-                                <td>SS01</td>
+                                <td>{{$catalog->product_code}}</td>
                             </tr>
                             <tr>
                                 <td>Category</td>
                                 <td>:</td>
-                                <td>Rings</td>
+                                <td>{{$catalog->type->name . ' (' . $catalog->gender . ')'}}</td>
                             </tr>
                             <tr>
-                                <td>Tags</td>
+                                <td>Material</td>
                                 <td>:</td>
-                                <td>Sofa, Chair, Home, Shop</td>
+                                <td>{{$catalog->material . ' ' . $catalog->karat}}</td>
+                            </tr>
+                            <tr>
+                                <td>Color</td>
+                                <td>:</td>
+                                <td>{{ucwords(str_replace('_', ' ', $catalog->color))}}</td>
                             </tr>
                             <tr>
                                 <td>Share</td>
@@ -101,11 +96,6 @@
                                     data-bs-target="#tab-description" type="button" role="tab"
                                     aria-controls="tab-description" aria-selected="true">Description</button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-tab-additional-information" data-bs-toggle="pill"
-                                    data-bs-target="#tab-additional-information" type="button" role="tab"
-                                    aria-controls="tab-additional-information" aria-selected="false">Additional
-                                Information</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-tab-reviews" data-bs-toggle="pill"
@@ -117,31 +107,17 @@
                         <!--Description Tab Section-->
                         <div class="tab-pane fade show active" id="tab-description" role="tabpanel"
                              aria-labelledby="pills-tab-description" tabindex="0">
-                            <p class="text-info">Designed to mesmerize, the delicate detailing adds a touch of
-                                sophistication. With its timeless beauty and enduring style, this engagement ring is
-                                a radiant expression of your love story.
-                                <br><br>
-                                Capture eternal love with our exquisite engagement ring. Crafted with precision in
-                                gleaming gold, this ring boasts timeless elegance. The dazzling centerpiece radiates
-                                brilliance, symbolizing the eternal bond of commitment. A captivating symbol of
-                                enduring love, this ring is the perfect embodiment of your forever promise.
-                            </p>
+                            <p class="text-info">{!!$catalog->description !!}</p>
 
-                            <div class="row shop-gallery text-center">
-                                <div class="col">
-                                    <img class="" src="{{ asset('assets/catalogs/item1.png') }}" height="200px">
-                                </div>
-                                <div class="col">
-                                    <img src="{{ asset('assets/catalogs/item1.png') }}" height="200px">
-                                </div>
-                            </div>
+{{--                            <div class="row shop-gallery text-center">--}}
+{{--                                <div class="col">--}}
+{{--                                    <img class="" src="{{ asset('assets/catalogs/item1.png') }}" height="200px">--}}
+{{--                                </div>--}}
+{{--                                <div class="col">--}}
+{{--                                    <img src="{{ asset('assets/catalogs/item1.png') }}" height="200px">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                        </div>
-
-                        <!--Additional Information Section-->
-                        <div class="tab-pane fade" id="tab-additional-information" role="tabpanel"
-                             aria-labelledby="pills-tab-additional-information" tabindex="0">
-                            Additional Information
                         </div>
 
                         <!--Reviews Section-->
@@ -236,89 +212,26 @@
                     <div class="owl-carousel p-4 ">
 
                         <!--Items-->
+                        @foreach($relatedCatalogs as $relatedCatalog)
+                            <a href="{{route('catalog', ['product_code' => $relatedCatalog->product_code])}}" onmouseover="checkOverflow(this)" class="d-block text-decoration-none item-card text-center bg-white my-3">
+                                <div class="bg-secondary p-2">
+                                    <div class="d-flex text-primary">
+                                        <div class="me-auto"><i data-feather="heart"></i></div>
+                                        <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
+                                    </div>
+                                    <img src="{{ asset( 'storage/'.$relatedCatalog->banner ) }}" class="mx-auto mb-3"
+                                         style="width:150px;height:150px;" alt="" srcset="">
+                                </div>
+                                <div class="p-3 overflow-hidden" >
+                                    <p class="text-primary m-0 marcellus text-uppercase text-nowrap" >{{ $relatedCatalog->title }}</p>
+                                    <small class="text-primary inter fw-lighter">{{ $relatedCatalog->gender . ' | ' . $relatedCatalog->type->name}}</small>
+                                </div>
+                            </a>
+                        @endforeach
 
-                        <div class="item item-card">
-                            <div class="bg-secondary p-2">
-                                <div class="d-flex">
-                                    <div class="me-auto"><i data-feather="heart"></i></div>
-                                    <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                                </div>
-                                <img src="{{ asset('assets/catalogs/item10.png') }}" class="mx-auto mb-3"
-                                     style="width:150px;height:150px;" alt="" srcset="">
-                            </div>
-                            <div class="p-2">
-                                <p class="text-primary m-0">STYLISH SILVER EARRINGS</p>
-                                <small class="text-primary inter fw-lighter">Women | Earrings</small>
-                                <br><br>
-                                <div class="d-flex">
-                                    <div class="me-auto text-primary">₹ 6000</div>
-                                    <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item item-card">
-                            <div class="bg-secondary p-2">
-                                <div class="d-flex">
-                                    <div class="me-auto"><i data-feather="heart"></i></div>
-                                    <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                                </div>
-                                <img src="{{ asset('assets/catalogs/item1.png') }}" class="mx-auto mb-3"
-                                     style="width:150px;height:150px;" alt="" srcset="">
-                            </div>
-                            <div class="p-2">
-                                <p class="text-primary m-0">GOLD ENGAGEMENT RINGS</p>
-                                <small class="text-primary inter fw-lighter">Couples | Wedding Rings</small>
-                                <br><br>
-                                <div class="d-flex">
-                                    <div class="me-auto text-primary">₹ 80,000</div>
-                                    <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item item-card">
-                            <div class="bg-secondary p-2">
-                                <div class="d-flex">
-                                    <div class="me-auto"><i data-feather="heart"></i></div>
-                                    <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                                </div>
-                                <img src="{{ asset('assets/catalogs/item11.png') }}" class="mx-auto mb-3"
-                                     style="width:150px;height:150px;" alt="" srcset="">
-                            </div>
-                            <div class="p-2">
-                                <p class="text-primary m-0">PURE GOLD NECKLACE</p>
-                                <small class="text-primary inter fw-lighter">Women | Necklace</small>
-                                <br><br>
-                                <div class="d-flex">
-                                    <div class="me-auto text-primary">₹ 70,000</div>
-                                    <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item item-card">
-                            <div class="bg-secondary p-2">
-                                <div class="d-flex">
-                                    <div class="me-auto"><i data-feather="heart"></i></div>
-                                    <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                                </div>
-                                <img src="{{ asset('assets/catalogs/item1.png') }}" class="mx-auto mb-3"
-                                     style="width:150px;height:150px;" alt="" srcset="">
-                            </div>
-                            <div class="p-2">
-                                <p class="text-primary m-0">GOLD ENGAGEMENT RINGS</p>
-                                <small class="text-primary inter fw-lighter">Couples | Wedding Rings</small>
-                                <br><br>
-                                <div class="d-flex">
-                                    <div class="me-auto text-primary">₹ 80,000</div>
-                                    <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
-                    <button class="btn btn-outline-secondary px-4">Show more</button>
+{{--                    <button class="btn btn-outline-secondary px-4">Show more</button>--}}
 
                 </div>
                 <!--Related Items ENDS-->

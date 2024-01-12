@@ -65,3 +65,13 @@ $('.slider-galeria-thumbs').slick({
   infinite: false,
   swipeToSlide: true,
 });
+
+function checkOverflow(divElement) {
+
+    element = divElement.children[1].firstElementChild;
+    if (element.offsetWidth < element.scrollWidth) {
+        element.classList.add('overflowing');
+    } else {
+        element.classList.remove('overflowing');
+    }
+}
