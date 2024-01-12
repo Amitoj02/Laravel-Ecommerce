@@ -12,16 +12,48 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class ShowCatalogs extends Component
 {
     use WithPagination;
-    public $catalogsQuery; //for pagination
+    public $catalogs_count = 0;
 
+    #[Url(as: 'q')]
+    public $search_text;
+    #[Url(as: 't')]
     public $type_id = 'all'; //Default
-    public $color, $karat, $gender, $material = [];
+
+    #[Url(as: 'c')]
+    public $color = [];
+
+    #[Url(as: 'k')]
+    public $karat = [];
+
+    #[Url(as: 'g')]
+    public $gender = [];
+
+    #[Url(as: 'm')]
+    public $material = [];
 
 
     protected $listeners = ['reloadCatalogs'];
 
     public function mount() {
+        if(isset($_GET['q'])) {
+            $this->search_text = $_GET['q'];
+        }
 
+        if(isset($_GET['t'])) {
+            $this->type_id = $_GET['t'];
+        }
+        if(isset($_GET['c'])) {
+            $this->color = $_GET['c'];
+        }
+        if(isset($_GET['k'])) {
+            $this->karat = $_GET['k'];
+        }
+        if(isset($_GET['g'])) {
+            $this->gender = $_GET['g'];
+        }
+        if(isset($_GET['m'])) {
+            $this->material = $_GET['m'];
+        }
     }
 
     public function render()
@@ -49,7 +81,12 @@ class ShowCatalogs extends Component
             $catalogs = $catalogs->whereIn('material', $this->material);
         }
 
-        $catalogs = $catalogs->paginate(2);
+        if($this->search_text) {
+            $catalogs = $catalogs->where('title', 'LIKE', '%'. $this->search_text . '%');
+        }
+
+        $catalogs = $catalogs->paginate(16);
+        $this->catalogs_count = $catalogs->total();
 
         return view('livewire.show-catalogs', [
             'catalogs' => $catalogs
@@ -57,6 +94,8 @@ class ShowCatalogs extends Component
     }
 
     public function reloadCatalogs($type_id, $color, $karat, $gender, $material) {
+
+//        $this->search_text = ''; //Resetting the search result
 
         $this->type_id = $type_id;
         $this->color = $color;

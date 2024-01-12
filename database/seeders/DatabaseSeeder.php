@@ -29,82 +29,24 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Ring']
         ]);
 
-        DB::table('catalogs')->insert([
-            [
-                'title' => 'Engagement Ring 1',
-                'slug' => 'engagement-ring',
-                'introduction' => 'This is intro title',
-                'description' => 'This is description',
-                'banner' => '01HKH4BMVYVYGVPQRAHR9MEW36.png',
-                'images' => '["01HKPK9WVJ6WWS02T0ZEPVVMMY.png","01HKPK9WVN8M93ZZZGCA4Z0TM2.png","01HKPK9WVV10M3JVCYDP00E5CA.png","01HKPK9WVZHF94M19Q84ED7AJF.png","01HKPK9WW1VE3NKV0FACKEQV6Y.png"]',
-                'color' => 'white_gold',
-                'karat' => '14K',
-                'gender' => 'Gents',
-                'material' => 'Gold',
-                'type_id' => '1',
-                'product_code' => '1234',
-                'visible' => '1'
-            ],
-            [
-                'title' => 'Engagement Ring 2',
-                'slug' => 'engagement-ring2',
-                'introduction' => 'This is intro title',
-                'description' => 'This is description',
-                'banner' => '01HKH4BMVYVYGVPQRAHR9MEW36.png',
-                'images' => '["01HKPK9WVJ6WWS02T0ZEPVVMMY.png","01HKPK9WVN8M93ZZZGCA4Z0TM2.png","01HKPK9WVV10M3JVCYDP00E5CA.png","01HKPK9WVZHF94M19Q84ED7AJF.png","01HKPK9WW1VE3NKV0FACKEQV6Y.png"]',
-                'color' => 'white_gold',
-                'karat' => '14K',
-                'gender' => 'Gents',
-                'material' => 'Gold',
-                'type_id' => '2',
-                'product_code' => '1235',
-                'visible' => '2'
-            ],
-            [
-                'title' => 'Engagement Ring 3',
-                'slug' => 'engagement-ring3',
-                'introduction' => 'This is intro title',
-                'description' => 'This is description',
-                'banner' => '01HKH4BMVYVYGVPQRAHR9MEW36.png',
-                'images' => '["01HKPK9WVJ6WWS02T0ZEPVVMMY.png","01HKPK9WVN8M93ZZZGCA4Z0TM2.png","01HKPK9WVV10M3JVCYDP00E5CA.png","01HKPK9WVZHF94M19Q84ED7AJF.png","01HKPK9WW1VE3NKV0FACKEQV6Y.png"]',
-                'color' => 'white_gold',
-                'karat' => '14K',
-                'gender' => 'Gents',
-                'material' => 'Gold',
-                'type_id' => '3',
-                'product_code' => '1236',
-                'visible' => '1'
-            ],
-            [
-                'title' => 'Engagement Ring 4',
-                'slug' => 'engagement-ring4',
-                'introduction' => 'This is intro title',
-                'description' => 'This is description',
-                'banner' => '01HKH4BMVYVYGVPQRAHR9MEW36.png',
-                'images' => '["01HKPK9WVJ6WWS02T0ZEPVVMMY.png","01HKPK9WVN8M93ZZZGCA4Z0TM2.png","01HKPK9WVV10M3JVCYDP00E5CA.png","01HKPK9WVZHF94M19Q84ED7AJF.png","01HKPK9WW1VE3NKV0FACKEQV6Y.png"]',
-                'color' => 'white_gold',
-                'karat' => '14K',
-                'gender' => 'Gents',
-                'material' => 'Gold',
-                'type_id' => '2',
-                'product_code' => '1237',
-                'visible' => '1'
-            ],
-            [
-                'title' => 'Engagement Ring 5',
-                'slug' => 'engagement-ring5',
-                'introduction' => 'This is intro title',
-                'description' => 'This is description',
-                'banner' => '01HKH4BMVYVYGVPQRAHR9MEW36.png',
-                'images' => '["01HKPK9WVJ6WWS02T0ZEPVVMMY.png","01HKPK9WVN8M93ZZZGCA4Z0TM2.png","01HKPK9WVV10M3JVCYDP00E5CA.png","01HKPK9WVZHF94M19Q84ED7AJF.png","01HKPK9WW1VE3NKV0FACKEQV6Y.png"]',
-                'color' => 'white_gold',
-                'karat' => '14K',
-                'gender' => 'Gents',
-                'material' => 'Gold',
-                'type_id' => '3',
-                'product_code' => '1238',
-                'visible' => '1'
-            ],
-        ]);
+        for ($i = 0; $i < 50; $i++) {
+            DB::table('catalogs')->insert([
+                [
+                    'title' => 'Engagement Ring ' . $i,
+                    'slug' => 'engagement-ring'. $i,
+                    'introduction' => 'This is intro title',
+                    'description' => 'This is description',
+                    'banner' => '01HKH4BMVYVYGVPQRAHR9MEW36.png',
+                    'images' => '["01HKPK9WVJ6WWS02T0ZEPVVMMY.png","01HKPK9WVN8M93ZZZGCA4Z0TM2.png","01HKPK9WVV10M3JVCYDP00E5CA.png","01HKPK9WVZHF94M19Q84ED7AJF.png","01HKPK9WW1VE3NKV0FACKEQV6Y.png"]',
+                    'color' => 'white_gold',
+                    'karat' => '14K',
+                    'gender' => 'Gents',
+                    'material' => 'Gold',
+                    'type_id' => rand(1, 3),
+                    'product_code' => $i,
+                    'visible' => '1'
+                ]
+            ]);
+        }
     }
 }

@@ -342,6 +342,10 @@ input[type="search"]::-webkit-search-results-decoration {
     --bs-pagination-focus-color: var(--bs-primary);
     --bs-pagination-disabled-color: var(--bs-primary);
     --bs-pagination-disabled-bg: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .pagination .page-link {

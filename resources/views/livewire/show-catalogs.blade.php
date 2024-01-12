@@ -3,12 +3,14 @@
     <!--Listing header-->
     <div class="row mb-3">
         <div class="col my-auto">
-            @if(isset($_GET['q']))
-                <b>Search Result for "{{$_GET['q']}}"</b>
+            @if($search_text)
+                <b>Search Result for "{{$search_text}}"</b>
+                <a href="/browse">(Clear Search)</a>
             @else
                 <b>Browse Catalogs</b>
             @endif
-            <small class="text-info">(52 items)</small>
+            <br>
+            <small class="text-info">({{$catalogs_count}} items)</small>
 
             {{--                    <div class="col-auto">--}}
             {{--                        <!-- FilterMenuCatalogs Component -->--}}
@@ -20,9 +22,9 @@
 
     <div wire:loading.remove class="row" id="catalog-listing">
         @foreach($catalogs as $catalog)
-            <div class="col-auto text-center item-card bg-white my-3">
+            <a href="{{route('catalog', ['product_code' => $catalog->product_code])}}" class="d-block text-decoration-none col-auto text-center item-card bg-white my-3">
                 <div class="bg-secondary p-2">
-                    <div class="d-flex">
+                    <div class="d-flex text-primary">
                         <div class="me-auto"><i data-feather="heart"></i></div>
                         <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
                     </div>
@@ -38,7 +40,7 @@
                     {{--                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>--}}
                     {{--            </div>--}}
                 </div>
-            </div>
+            </a>
         @endforeach
     </div>
 
@@ -47,7 +49,6 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-
 
 
     {{ $catalogs->links(data: ['scrollTo' => '#catalog-listing']) }}

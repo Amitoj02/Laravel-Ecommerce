@@ -16,39 +16,39 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('index');
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
 Route::get('/browse', function () {
     return view('browse');
-});
+})->name('browse');
 
 Route::get('/cart/checkout', function () {
     return view('cart/cart-checkout');
-});
+})->name('checkout');
 
 Route::get('/cart/complete', function () {
     return view('cart/cart-complete');
-});
+})->name('purchase');
 
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name('contact');
 
 Route::get('/order', function () {
     return view('order');
-});
+})->name('order');
 
 Route::get('/igi', function () {
     return view('igi');
-});
+})->name('igi');
 
-Route::get('/item', function () {
+Route::get('/catalog/{product_code}', function () {
     return view('item');
-});
+})->name('catalog');
 
 
 
