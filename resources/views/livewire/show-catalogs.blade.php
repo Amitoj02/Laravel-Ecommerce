@@ -34,11 +34,6 @@
                 <div class="p-3 overflow-hidden" >
                     <p class="text-primary m-0 marcellus text-uppercase text-nowrap" >{{ $catalog->title }}</p>
                     <small class="text-primary inter fw-lighter">{{ $catalog->gender . ' | ' . $catalog->type->name}}</small>
-                    {{--            <br><br>--}}
-                    {{--            <div class="d-flex marcellus">--}}
-                    {{--                <div class="me-auto text-primary">₹ {{ $catalog->price }}</div>--}}
-                    {{--                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>--}}
-                    {{--            </div>--}}
                 </div>
             </a>
         @endforeach

@@ -18,15 +18,15 @@ class DatabaseSeeder extends Seeder
             'name' => 'Amitoj',
             'email' => 'contact@amitoj.dev',
             'password' => Hash::make('Admin#2002'),
-            'is_admin' => 1,
+            'is_admin' => true,
             'address' => '123 Park, Brampton, ON - 123123',
             'phone_number' => '9876543210'
         ]);
 
         DB::table('types')->insert([
-            ['name' => 'Necklace'],
-            ['name' => 'Earring'],
-            ['name' => 'Ring']
+            ['name' => 'Necklace', 'image' => '01HKH4BMVYVYGVPQRAHR9MEW36.png'],
+            ['name' => 'Earring', 'image' => '01HKH4BMVYVYGVPQRAHR9MEW36.png'],
+            ['name' => 'Ring', 'image' => '01HKH4BMVYVYGVPQRAHR9MEW36.png']
         ]);
 
         for ($i = 0; $i < 50; $i++) {
@@ -44,7 +44,9 @@ class DatabaseSeeder extends Seeder
                     'material' => 'Gold',
                     'type_id' => rand(1, 3),
                     'product_code' => $i,
-                    'visible' => '1'
+                    'best_seller' => false,
+                    'is_slide' => false,
+                    'visible' => true
                 ]
             ]);
         }

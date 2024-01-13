@@ -17,9 +17,9 @@ class CatalogController extends Controller
         $relatedCatalogs = Catalog::query()
             ->where('gender', $catalog->gender)
             ->where('type_id', $catalog->type_id)
+            ->where('visible', 'LIKE', '1')
             ->take(10)
             ->get();
-
 
         return view('item', [
             'catalog' => $catalog,

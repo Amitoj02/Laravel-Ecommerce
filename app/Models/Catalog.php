@@ -24,22 +24,16 @@ class Catalog extends Model
         'type_id',
         'images',
         'product_code',
+        'best_seller',
+        'is_slide',
         'visible'
-//        'price',
-//        'on_discount',
-//        'discount',
-//        'discount_old_price',
-//        'instore_available',
-//        'online_available',
-//        'quantity',
     ];
 
     protected $casts = [
         'images' => 'array',
-        'visible' => 'boolean'
-//        'instore_available' => 'boolean',
-//        'on_discount' => 'boolean',
-//        'online_available' => 'boolean',
+        'visible' => 'boolean',
+        'best_seller' => 'boolean',
+        'is_slide' => 'boolean',
     ];
     public function type(): BelongsTo {
         return $this->belongsTo(Type::class, 'type_id', 'id');

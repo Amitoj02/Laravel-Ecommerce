@@ -6,12 +6,14 @@ use App\Filament\Resources\TagResource\Pages;
 //use App\Filament\Resources\TypeResource\RelationManagers;
 use App\Models\Type;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -36,6 +38,13 @@ class TypeResource extends Resource
                         ->debounce(500)
                         ->required(),
 
+                    FileUpload::make('image')
+                        ->helperText('This image will be shown in the category list at home page.')
+                        ->image()
+                        ->imageEditor()
+                        ->visibility('public')
+                        ->required(),
+
                 ]),
             ]);
     }
@@ -49,7 +58,9 @@ class TypeResource extends Resource
                     ->sortable(),
                 TextColumn::make('name')
                     ->searchable()
-                    ->sortable()
+                    ->sortable(),
+                ImageColumn::make('image')
+                    ->toggleable(),
             ])
             ->filters([
                 //

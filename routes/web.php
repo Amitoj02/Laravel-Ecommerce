@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BrowseController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,17 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('index');
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/browse', function () {
-    return view('browse');
-})->name('browse');
+Route::get('/browse', [BrowseController::class, 'show'])->name('browse');
 
 Route::get('/cart/checkout', function () {
     return view('cart/cart-checkout');
@@ -48,7 +46,6 @@ Route::get('/igi', function () {
 })->name('igi');
 
 Route::get('/catalog/{product_code}', [CatalogController::class, 'show'])->name('catalog');
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');

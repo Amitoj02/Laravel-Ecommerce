@@ -211,7 +211,6 @@ class OrderResource extends Resource
                             })
                             ->color('primary')
                             ->icon('heroicon-m-user'),
-
                     ])
                 ->columns(2),
                 InfoSection::make('Order Summary')
@@ -241,12 +240,6 @@ class OrderResource extends Resource
                                 'delivered' => 'Delivered',
                                 'cancelled' => 'Cancelled'
                             }),
-//                        Select::make('status')
-//                            ->options([
-//                                'draft' => 'Draft',
-//                                'reviewing' => 'Reviewing',
-//                                'published' => 'Published',
-//                            ]),
                         TextEntry::make('total_price')
                             ->weight(FontWeight::Bold)
                             ->money('inr'),
@@ -255,33 +248,7 @@ class OrderResource extends Resource
                             ->default('(None)'),
                     ])
                     ->columns(2),
-
-//                RepeatableEntry::make('cartItems')
-//                    ->schema([
-//                        TextEntry::make('catalog.title')
-//                            ->label('Product name'),
-//                        TextEntry::make('catalog.product_code')
-//                            ->label('Product code'),
-//                        TextEntry::make('total_price')
-//                            ->label('Total price (Price x Quantity)')
-//                            //->money('inr')
-//                            ->state(function(Model $record): string{
-//                                return '₹'.$record->total_price.' (₹'.$record->catalog->price.' x '.$record->quantity.')';
-//                            }),
-//                        TextEntry::make('View product')
-//                            ->icon('heroicon-m-eye')
-//                            ->color('primary')
-//                            ->default('View')
-//                            ->url(function(Model $record): string{
-//                                return env('APP_URL').'/admin/catalogs/'.$record->catalog_id.'/edit';
-//                            })
-//
-//                    ])
-//                    ->columns(2)
-//                    ->columnSpanFull()
-
-            ])
-            ;
+            ]);
     }
 
     public static function table(Table $table): Table

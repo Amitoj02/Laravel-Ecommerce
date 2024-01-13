@@ -138,6 +138,26 @@ class CatalogResource extends Resource
 
                 ]),
 
+                Section::make('Store Listing')->schema([
+                    Toggle::make('best_seller')
+                        ->helperText(str('Make the post visible in "Best Seller" sections')->markdown()->toHtmlString())
+                        ->default(true)
+                        ->onIcon('heroicon-m-check')
+                        ->onColor('success')
+                        ->offIcon('heroicon-m-x-mark')
+                        ->offColor('danger'),
+
+                    Toggle::make('is_slide')
+                        ->label('Slide')
+                        ->helperText(str('Make the post visible in slideshow in homepage and catalog listing.')->markdown()->toHtmlString())
+                        ->default(true)
+                        ->onIcon('heroicon-m-check')
+                        ->onColor('success')
+                        ->offIcon('heroicon-m-x-mark')
+                        ->offColor('danger')
+
+                ])->columns(2),
+
                 Section::make('Inventory')->schema([
                     TextInput::make('product_code')
                         ->maxLength(50)

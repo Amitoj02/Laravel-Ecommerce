@@ -26,6 +26,8 @@ return new class extends Migration
             $table->unsignedBigInteger('type_id');
             $table->string('product_code')->unique();
             $table->boolean('visible')->default(1);
+            $table->boolean('best_seller')->default(0);
+            $table->boolean('is_slide')->default(0);
 
             $table->timestamps();
             $table->foreign('type_id')->references('id')->on('types');

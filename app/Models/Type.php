@@ -11,7 +11,7 @@ class Type extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'image'];
 
     public function catalogs(): HasMany{
         return $this->hasMany(Catalog::class, 'type_id', 'id');

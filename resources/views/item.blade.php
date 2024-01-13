@@ -213,20 +213,7 @@
 
                         <!--Items-->
                         @foreach($relatedCatalogs as $relatedCatalog)
-                            <a href="{{route('catalog', ['product_code' => $relatedCatalog->product_code])}}" onmouseover="checkOverflow(this)" class="d-block text-decoration-none item-card text-center bg-white my-3">
-                                <div class="bg-secondary p-2">
-                                    <div class="d-flex text-primary">
-                                        <div class="me-auto"><i data-feather="heart"></i></div>
-                                        <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                                    </div>
-                                    <img src="{{ asset( 'storage/'.$relatedCatalog->banner ) }}" class="mx-auto mb-3"
-                                         style="width:150px;height:150px;" alt="" srcset="">
-                                </div>
-                                <div class="p-3 overflow-hidden" >
-                                    <p class="text-primary m-0 marcellus text-uppercase text-nowrap" >{{ $relatedCatalog->title }}</p>
-                                    <small class="text-primary inter fw-lighter">{{ $relatedCatalog->gender . ' | ' . $relatedCatalog->type->name}}</small>
-                                </div>
-                            </a>
+                            <x-catalog :catalog="$relatedCatalog"/>
                         @endforeach
 
                     </div>

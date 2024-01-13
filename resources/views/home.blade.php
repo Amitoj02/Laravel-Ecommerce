@@ -6,28 +6,18 @@
     <div class="pb-5">
         <div id="main-slider" class="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="container text-center w-30">
-                        <img class="d-block m-auto p-5" style="height:250px;width:250px;"
-                             src="{{ asset('assets/catalogs/item1.png') }}" alt="Item 1">
-                        <h3 class="under-border mb-3">Gold Engagement Ring</h3>
-                        <h5>Rs 30,000</h5>
-                        <p style="color:var(--bs-secondary); opacity:0.7;"><small>This is our new best
-                                collection of engagement ring for newely wed couples</small></p>
-                        <button type="button" class="btn btn-primary mt-3">View Details</button>
+                @foreach($slides as $slide)
+                    <div class="carousel-item @if($loop->first) active @endif">
+                        <div class="container text-center w-30">
+                            <img class="d-block m-auto p-5" style="height:250px;width:250px;"
+                                 src="{{ asset('storage/' . $slide->banner) }}">
+                            <h3 class="under-border mb-3">{{ $slide->title }}</h3>
+{{--                            <h5>Rs 30,000</h5>--}}
+                            <p style="color:var(--bs-secondary); opacity:0.7;"><small>{{ $slide->introduction  }}</small></p>
+                            <a href="{{ route('catalog', ['product_code' => $slide->product_code]) }}" type="button" class="btn btn-primary mt-3">View Details</a>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container text-center w-30">
-                        <img class="d-block m-auto p-5" style="height:250px;width:250px;"
-                             src="{{ asset('assets/catalogs/item2.png') }}" alt="Item 1">
-                        <h3 class="under-border mb-3">Gold Engagement Ring</h3>
-                        <h5>Rs 30,000</h5>
-                        <p style="color:var(--bs-secondary); opacity:0.7;"><small>This is our new best
-                                collection of engagement ring for newely wed couples</small></p>
-                        <button type="button" class="btn btn-primary mt-3">View Details</button>
-                    </div>
-                </div>
+                @endforeach
                 <div class="carousel-item">
                     <div class="container text-center w-30">
                         <img class="d-block m-auto p-5" style="height:250px;width:250px;"
@@ -99,47 +89,12 @@
 
                 <div class="container text-center p-5">
                     <div class="row row-cols-auto justify-content-center row-cols-lg-auto justify-content-md-center">
-                        <div class="col category-card mx-auto">
-                            <img src="{{ asset('assets/catalogs/item1.png') }}" alt="" srcset="">
-                            <small>Rings</small>
-                        </div>
-                        <div class="col category-card mx-auto">
-                            <img src="{{ asset('assets/catalogs/item11.png') }}" alt="" srcset="">
-                            <small>Necklaces</small>
-                        </div>
-                        <div class="col category-card mx-auto">
-                            <img src="{{ asset('assets/catalogs/item10.png') }}" alt="" srcset="">
-                            <small>Earrings</small>
-                        </div>
-                        <div class="col category-card mx-auto">
-                            <img src="{{ asset('assets/catalogs/item8.png') }}" alt="" srcset="">
-                            <small>Bracelets</small>
-                        </div>
-                        <div class="col category-card mx-auto">
-                            <img src="{{ asset('assets/catalogs/item7.png') }}" alt="" srcset="">
-                            <small>Jewellery Sets</small>
-                        </div>
-
-                        <div class="col category-card mx-auto">
-                            <img src="{{ asset('assets/catalogs/item12.png') }}" alt="" srcset="">
-                            <small>Managalsutras</small>
-                        </div>
-                        <div class="col category-card mx-auto">
-                            <img src="{{ asset('assets/catalogs/item4.png') }}" alt="" srcset="">
-                            <small>Personalised</small>
-                        </div>
-                        <div class="col category-card mx-auto">
-                            <img src="{{ asset('assets/catalogs/item5.png') }}" alt="" srcset="">
-                            <small>Nose Pins</small>
-                        </div>
-                        <div class="col category-card mx-auto">
-                            <img src="{{ asset('assets/catalogs/item6.png') }}" alt="" srcset="">
-                            <small>Chains</small>
-                        </div>
-                        <div class="col category-card mx-auto">
-                            <img src="{{ asset('assets/catalogs/item13.png') }}" alt="" srcset="">
-                            <small>Toe Rings</small>
-                        </div>
+                        @foreach($types as $type)
+                            <a href="{{ route('browse', ['t' => $type->id]) }}" class="d-block text-decoration-none col category-card mx-auto">
+                                <img src="{{ asset('storage/' . $type->image) }}" />
+                                <small class="text-primary">{{ $type->name }}</small>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -188,86 +143,10 @@
                 <div class="owl-carousel p-4">
 
                     <!--Collection items-->
+                    @foreach($latestCatalogs as $latestCatalog)
+                        <x-catalog :catalog="$latestCatalog"/>
+                    @endforeach
 
-                    <div class="item item-card">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item10.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0">STYLISH SILVER EARRINGS</p>
-                            <small class="text-primary inter fw-lighter">Women | Earrings</small>
-                            <br><br>
-                            <div class="d-flex">
-                                <div class="me-auto text-primary">₹ 6000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item item-card">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item1.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0">GOLD ENGAGEMENT RINGS</p>
-                            <small class="text-primary inter fw-lighter">Couples | Wedding Rings</small>
-                            <br><br>
-                            <div class="d-flex">
-                                <div class="me-auto text-primary">₹ 80,000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item item-card">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item11.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0">PURE GOLD NECKLACE</p>
-                            <small class="text-primary inter fw-lighter">Women | Necklace</small>
-                            <br><br>
-                            <div class="d-flex">
-                                <div class="me-auto text-primary">₹ 70,000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item item-card">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item1.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0">GOLD ENGAGEMENT RINGS</p>
-                            <small class="text-primary inter fw-lighter">Couples | Wedding Rings</small>
-                            <br><br>
-                            <div class="d-flex">
-                                <div class="me-auto text-primary">₹ 80,000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Sale banners -->
@@ -307,86 +186,10 @@
                 <div class="owl-carousel p-4 mb-4">
 
                     <!--Items-->
+                    @foreach($bestSellers as $bestSeller)
+                        <x-catalog :catalog="$bestSeller"/>
+                    @endforeach
 
-                    <div class="item item-card">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item10.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0">STYLISH SILVER EARRINGS</p>
-                            <small class="text-primary inter fw-lighter">Women | Earrings</small>
-                            <br><br>
-                            <div class="d-flex">
-                                <div class="me-auto text-primary">₹ 6000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item item-card">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item1.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0">GOLD ENGAGEMENT RINGS</p>
-                            <small class="text-primary inter fw-lighter">Couples | Wedding Rings</small>
-                            <br><br>
-                            <div class="d-flex">
-                                <div class="me-auto text-primary">₹ 80,000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item item-card">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item11.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0">PURE GOLD NECKLACE</p>
-                            <small class="text-primary inter fw-lighter">Women | Necklace</small>
-                            <br><br>
-                            <div class="d-flex">
-                                <div class="me-auto text-primary">₹ 70,000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item item-card">
-                        <div class="bg-secondary p-2">
-                            <div class="d-flex">
-                                <div class="me-auto"><i data-feather="heart"></i></div>
-                                <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
-                            </div>
-                            <img src="{{ asset('assets/catalogs/item1.png') }}" class="mx-auto mb-3"
-                                 style="width:150px;height:150px;" alt="" srcset="">
-                        </div>
-                        <div class="p-2">
-                            <p class="text-primary m-0">GOLD ENGAGEMENT RINGS</p>
-                            <small class="text-primary inter fw-lighter">Couples | Wedding Rings</small>
-                            <br><br>
-                            <div class="d-flex">
-                                <div class="me-auto text-primary">₹ 80,000</div>
-                                <div class="ms-auto">Explore<i data-feather="chevron-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!--Best Sellers ENDS-->
             </div>
