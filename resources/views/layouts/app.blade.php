@@ -83,21 +83,35 @@
                                 <li class="col">
                                     <a class="nav-icon" href="#"><i data-feather="heart"></i></a>
                                 </li>
-                                <li class="col">
+                                <li class="col dropdown">
+                                @auth
+                                    <a class="nav-icon" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i data-feather="user"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a></li>
+                                        <li><a class="dropdown-item" href="#"><i data-feather="package"></i> Orders</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="{{ route('logout') }}"><i data-feather="log-out"></i> Logout</a></li>
+                                    </ul>
+                                @endauth
+
+                                @guest
                                     <a class="nav-icon" href="#" data-bs-toggle="modal"
-                                       data-bs-target="#model-login"><i data-feather="user"></i></a>
+                                       data-bs-target="#modal-login" id="nav-profile-icon"><i data-feather="user"></i></a>
+                                @endguest
                                 </li>
                                 <li class="col">
                                     <a class="nav-icon" href="#" data-bs-toggle="modal"
-                                       data-bs-target="#model-cart"><i data-feather="shopping-bag"></i></a>
+                                       data-bs-target="#modal-cart"><i data-feather="shopping-bag"></i></a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </nav>
                 <!-- Modals (MUST BE INCLUDED WITH NAVBAR) -->
+
+                @guest
                 <!-- Login Modal -->
-                <div class="modal fade" id="model-login" tabindex="-1" aria-labelledby="model-login-label"
+                <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="modal-login-label"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content section-leaf3">
@@ -110,31 +124,31 @@
                                 <p class="text-primary m-0">Welcome Back To</p>
                                 <h1 class="text-primary marcellus mx-2" style="font-size: 3rem;">Swarn Abhishek</h1>
                                 <p class="text-primary m-0">New here? <a href="#" class="text-info"
-                                                                         data-bs-toggle="modal" data-bs-target="#model-signup">Create an account.</a>
+                                                                         data-bs-toggle="modal" data-bs-target="#modal-signup" id="text-create-account">Create an account.</a>
                                 </p>
 
-                                <form>
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
                                     <div class="form-floating my-4">
-                                        <input type="email" class="form-control" id="floatingInput"
-                                               placeholder="name@example.com">
-                                        <label for="floatingInput">Email address</label>
+                                        <x-text-input type="email" class="form-control" id="l_email" name="email" :value="old('email')" placeholder="Email Address" required/>
+                                        <label for="l_email" class="ms-2">Email Address</label>
+                                        <x-input-error :messages="$errors->login->get('email')" class="mt-2" />
                                     </div>
                                     <div class="form-floating my-2">
-                                        <input type="password" class="form-control" id="floatingPassword"
-                                               placeholder="Password">
-                                        <label for="floatingPassword">Password</label>
+                                        <x-text-input type="password" class="form-control" id="l_password" name="password" :value="old('password')" placeholder="Password" required/>
+                                        <label for="l_password" class="ms-2">Password</label>
+                                        <x-input-error :messages="$errors->login->get('password')" class="mt-2" />
                                     </div>
 
                                     <div class="form-check my-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="remember_me">
-                                        <label class="form-check-label" for="remember_me">
+                                        <input class="form-check-input" id="l_remember_me" type="checkbox" name="remember" value="true" @if(old('remember')) checked @endif >
+                                        <label class="form-check-label" for="l_remember_me">
                                             Remember this device
                                         </label>
                                     </div>
 
                                     <div class="d-grid">
-                                        <button class="btn btn-secondary-classic btn-lg"
-                                                type="button">Login</button>
+                                        <input class="btn btn-secondary-classic btn-lg" type="submit" value="Submit">
                                     </div>
                                     <div class="w-100 my-2 text-center">
                                         <a class="text-info ps-auto" href="#">Forgot Password?</a>
@@ -144,16 +158,15 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Signup Modal -->
-                <div class="modal fade" id="model-signup" tabindex="-1" aria-labelledby="model-signup-label"
+                <div class="modal fade" id="modal-signup" tabindex="-1" aria-labelledby="modal-signup-label"
                      aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content section-leaf3">
                             <div class="section-leaf4">
                                 <div class="modal-header">
                                     <i data-feather="arrow-left" data-bs-toggle="modal"
-                                       data-bs-target="#model-login"></i>
+                                       data-bs-target="#modal-login"></i>
                                 </div>
                                 <div class="px-4 inter text-center">
                                     <img src="{{ asset('assets/logo_variant1_green.png') }}" width="150px" height="150px">
@@ -163,49 +176,50 @@
                                     <h1 class="text-primary marcellus mx-2" style="font-size: 3rem;">Create Account
                                     </h1>
 
-                                    <form>
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
                                         <div class="row row-cols-1 row-cols-lg-2">
                                             <div class="col form-floating my-2">
-                                                <input type="text" class="form-control" id="c_name"
-                                                       placeholder="Name">
+                                                <x-text-input type="text" class="form-control" id="c_name" name="name" :value="old('name')" placeholder="Name" required/>
                                                 <label for="floatingInput" class="ms-2">Name</label>
+                                                <x-input-error :messages="$errors->register->get('name')" class="mt-2" />
                                             </div>
                                             <div class="col form-floating my-2">
-                                                <input type="text" class="form-control" id="c_surname"
-                                                       placeholder="Surname">
+                                                <x-text-input type="text" class="form-control" id="c_surname" name="surname" placeholder="Surname"/>
                                                 <label for="c_surname" class="ms-2">Surname</label>
+                                                <x-input-error :messages="$errors->register->get('surname')" class="mt-2" />
                                             </div>
                                         </div>
 
                                         <div class="row row-cols-1 row-cols-lg-2">
                                             <div class="col form-floating my-2">
-                                                <input type="email" class="form-control" id="c_email"
-                                                       placeholder="Email">
+                                                <x-text-input type="email" class="form-control" id="c_email" name="email" :value="old('email')" placeholder="Email" required/>
                                                 <label for="c_email" class="ms-2">Email</label>
+                                                <x-input-error :messages="$errors->register->get('email')" class="mt-2" />
                                             </div>
                                             <div class="col form-floating my-2">
-                                                <input type="text" class="form-control" id="c_phone"
-                                                       placeholder="Mobile Number">
+                                                <x-text-input type="text" class="form-control" id="c_phone" name="phone_number" :value="old('phone_number')" placeholder="Mobile Number" required/>
                                                 <label for="c_phone" class="ms-2">Mobile Number</label>
+                                                <x-input-error :messages="$errors->register->get('phone_number')" class="mt-2" />
                                             </div>
                                         </div>
 
                                         <div class="form-floating my-2">
-                                            <input type="text" class="form-control" id="c_address"
-                                                   placeholder="Address">
+                                            <x-text-input type="text" class="form-control" id="c_address" name="address" :value="old('address')" placeholder="Address"/>
                                             <label for="c_address" class="ms-2">Address</label>
+                                            <x-input-error :messages="$errors->register->get('address')" class="mt-2" />
                                         </div>
 
                                         <div class="row row-cols-1 row-cols-lg-2">
                                             <div class="col form-floating my-2">
-                                                <input type="password" class="form-control" id="c_password"
-                                                       placeholder="name@example.com">
+                                                <x-text-input type="password" class="form-control" id="c_password" name="password" placeholder="Create Password" required/>
                                                 <label for="floatingInput" class="ms-2">Create Password</label>
+                                                <x-input-error :messages="$errors->register->get('password')" class="mt-2" />
                                             </div>
                                             <div class="col form-floating my-2">
-                                                <input type="password" class="form-control" id="floatingPassword"
-                                                       placeholder="Password">
-                                                <label for="floatingPassword" class="ms-2">Confirm Password</label>
+                                                <x-text-input type="password" class="form-control" id="c_confirm_password" name="password_confirmation" placeholder="Password" required/>
+                                                <label for="c_confirm_password" class="ms-2">Confirm Password</label>
+                                                <x-input-error :messages="$errors->register->get('password_confirmation')" class="mt-2" />
                                             </div>
                                         </div>
 
@@ -215,8 +229,7 @@
                                         </div>
 
                                         <div class="d-grid">
-                                            <button class="btn btn-secondary-classic btn-lg"
-                                                    type="button">Submit</button>
+                                            <input class="btn btn-secondary-classic btn-lg" type="submit" value="Submit">
                                         </div>
                                     </form>
                                 </div>
@@ -224,9 +237,10 @@
                         </div>
                     </div>
                 </div>
+                @endguest
 
                 <!--Cart Modal-->
-                <div class="modal fade" id="model-cart" tabindex="-1" aria-labelledby="model-cart-label"
+                <div class="modal fade" id="modal-cart" tabindex="-1" aria-labelledby="modal-cart-label"
                      aria-hidden="true">
                     <div class="modal-dialog" style="margin-right:3%">
                         <div class="modal-content inter">
@@ -282,6 +296,20 @@
                             </div>
 
 
+                        </div>
+                    </div>
+                </div>
+                <!--Verification Email Sent - Toast-->
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div id="verificationEmailSent" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <img src="..." class="rounded me-2" alt="...">
+                            <strong class="me-auto">Bootstrap</strong>
+                            <small>11 mins ago</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Hello, world! This is a toast message.
                         </div>
                     </div>
                 </div>
@@ -371,6 +399,15 @@
 <script src="{{ asset('js/owl-carousel/owl.carousel.min.js') }}"></script>
 <!-- Custom scripts -->
 <script src="{{ asset('js/script.js')}}"></script>
+
+{{--If the user returns from signup error--}}
+@if($errors->hasBag('register'))
+    <script>document.getElementById('text-create-account').click();</script>
+@endif
+{{--If the user returns from login error--}}
+@if($errors->hasBag('login'))
+    <script>document.getElementById('nav-profile-icon').click();</script>
+@endif
 
 @livewireScripts
 </body>
