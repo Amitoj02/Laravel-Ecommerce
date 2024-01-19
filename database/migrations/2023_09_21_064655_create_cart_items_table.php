@@ -15,9 +15,8 @@ return new class extends Migration
             $table->id('item_id');
             $table->foreignId('catalog_id')->constrained('catalogs')->cascadeOnDelete();
             $table->integer('quantity');
-            $table->double('unit_price');
-            $table->double('total_price');
-            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->longText('message')->nullable();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('order_id')->nullable()->constrained('orders')->cascadeOnDelete();
             $table->timestamps();
         });

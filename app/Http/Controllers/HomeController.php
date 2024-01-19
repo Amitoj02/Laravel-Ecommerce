@@ -68,7 +68,7 @@ class HomeController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('index');
+        return redirect()->back();
     }
 
     public function login(Request $request): RedirectResponse
@@ -77,7 +77,7 @@ class HomeController extends Controller
         if (Auth::attempt($request->only('email', 'password'), $request->input('remember'))) {
             // Authentication passed
             $request->session()->regenerate();
-            return redirect()->route('index');
+            return redirect()->back();
         }
 
         // Authentication failed
@@ -94,6 +94,6 @@ class HomeController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('index');
+        return redirect()->back();
     }
 }

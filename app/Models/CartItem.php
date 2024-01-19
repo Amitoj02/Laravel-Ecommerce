@@ -11,7 +11,7 @@ class CartItem extends Model
 {
     use HasFactory;
     protected $primaryKey = 'item_id';
-    protected $fillable = ['catalog_id', 'quantity', 'user_id', 'unit_price', 'total_price', 'order_id'];
+    protected $fillable = ['catalog_id', 'quantity', 'user_id', 'message', 'order_id'];
 
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);

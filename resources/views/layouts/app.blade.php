@@ -80,9 +80,13 @@
                                     <input class="form-control" id="searchbar" name="q" type="search" placeholder="Search"
                                            aria-label="Search">
                                 </form>
+
+                                @auth
                                 <li class="col">
                                     <a class="nav-icon" href="#"><i data-feather="heart"></i></a>
                                 </li>
+                                @endauth
+
                                 <li class="col dropdown">
                                 @auth
                                     <a class="nav-icon" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i data-feather="user"></i></a>
@@ -93,16 +97,18 @@
                                         <li><a class="dropdown-item" href="{{ route('logout') }}"><i data-feather="log-out"></i> Logout</a></li>
                                     </ul>
                                 @endauth
-
                                 @guest
                                     <a class="nav-icon" href="#" data-bs-toggle="modal"
                                        data-bs-target="#modal-login" id="nav-profile-icon"><i data-feather="user"></i></a>
                                 @endguest
                                 </li>
+
+                                @auth
                                 <li class="col">
                                     <a class="nav-icon" href="#" data-bs-toggle="modal"
-                                       data-bs-target="#modal-cart"><i data-feather="shopping-bag"></i></a>
+                                       data-bs-target="#modal-cart" id="nav-cart-icon"><i data-feather="shopping-bag"></i></a>
                                 </li>
+                                @endauth
                             </ul>
                         </div>
                     </div>
@@ -239,80 +245,15 @@
                 </div>
                 @endguest
 
+                @auth
                 <!--Cart Modal-->
                 <div class="modal fade" id="modal-cart" tabindex="-1" aria-labelledby="modal-cart-label"
                      aria-hidden="true">
                     <div class="modal-dialog" style="margin-right:3%">
-                        <div class="modal-content inter">
-
-                            <div class="modal-header p-4">
-                                <h4 class="text-primary fw-bold my-auto">Shopping Cart</h4>
-                                <i data-feather="shopping-bag"  class="my-auto"></i>
-                            </div>
-
-                            <div class="px-4 inter">
-
-                                <div class="row my-3">
-                                    <div class="col-auto text-center">
-                                        <img class="cart-item-img" src="{{ asset('assets/catalogs/item1.png') }}" width="80px">
-                                    </div>
-                                    <div class="col-8 align-self-center">
-                                        <p class="m-0 align-middle fw-bold p-1">Engagement Ring</p>
-                                        <p class="m-0 align-middle p-1"><b>1</b> x Rs.25,000.00</p>
-                                    </div>
-                                </div>
-
-                                <div class="row my-3">
-                                    <div class="col-auto text-center">
-                                        <img class="cart-item-img" src="{{ asset('assets/catalogs/item1.png') }}" width="80px">
-                                    </div>
-                                    <div class="col-8 align-self-center">
-                                        <p class="m-0 align-middle fw-bold p-1">Engagement Ring</p>
-                                        <p class="m-0 align-middle p-1"><b>1</b> x Rs.25,000.00</p>
-                                    </div>
-                                </div>
-
-                                <div class="row my-3">
-                                    <div class="col-auto text-center">
-                                        <img class="cart-item-img" src="{{ asset('assets/catalogs/item1.png') }}" width="80px">
-                                    </div>
-                                    <div class="col-8 align-self-center">
-                                        <p class="m-0 align-middle fw-bold p-1">Engagement Ring</p>
-                                        <p class="m-0 align-middle p-1"><b>1</b> x Rs.25,000.00</p>
-                                    </div>
-                                </div>
-
-                                <hr>
-
-                                <div class="row">
-                                    <p class="col">Subtotal</p>
-                                    <p class="col fw-bolder ms-3 text-primary">Rs. 520,000.00</p>
-                                </div>
-
-                                <div class="d-grid mb-3 d-md-block text-center">
-                                    <a href="{{ asset('/cart/checkout') }}" class="btn btn-outline-secondary mx-2 px-4 rounded-5" >Cart</a>
-                                    <a href="{{ asset('/cart/checkout') }}" class="btn btn-outline-secondary mx-2 px-4 rounded-5" type="button">Checkout</a>
-                                </div>
-                            </div>
-
-
-                        </div>
+                        <livewire:shopping-cart/>
                     </div>
                 </div>
-                <!--Verification Email Sent - Toast-->
-                <div class="toast-container position-fixed bottom-0 end-0 p-3">
-                    <div id="verificationEmailSent" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header">
-                            <img src="..." class="rounded me-2" alt="...">
-                            <strong class="me-auto">Bootstrap</strong>
-                            <small>11 mins ago</small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                        </div>
-                        <div class="toast-body">
-                            Hello, world! This is a toast message.
-                        </div>
-                    </div>
-                </div>
+                @endauth
 
                 <!-- Navbar Ends -->
 

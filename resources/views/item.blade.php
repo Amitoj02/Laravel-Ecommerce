@@ -41,15 +41,40 @@
                         </div>
 
                         <p class="small">{{$catalog->introduction}}</p>
+                        <br>
                         <div class="row align-items-center pb-2">
-                            <div class="col-4 shop-quantity">
-                                <span class="sign minus">-</span>
-                                <input type="number" class="form-control" id="quantity" placeholder="Quantity"
-                                       value="1">
-                                <span class="sign plus">+</span>
+                            @guest
+                            <div class="d-grid gap-2 col-6 mb-3">
+                                <div class="btn btn-secondary-classic mx-2 px-4" type="button" onclick="document.getElementById('nav-profile-icon').click()">Get Quote</div>
                             </div>
-                            <div class="col-5 btn btn-outline-secondary">Add To Cart</div>
+                            @endguest
+
+                            @auth
+                            <form method="post" action="{{ route('addToCart', ['product_code' => $catalog->product_code]) }}">
+                                @csrf
+                                <input type="hidden" name="catalog_id" value="{{$catalog->id}}">
+                                <div class="col-9 form-floating mb-3">
+                                    <textarea class="form-control" placeholder="Leave a comment here" name="message" id="txt_comment" style="height: 100px"></textarea>
+                                    <label class="ms-2 text-info" for="txt_comment">Write message to customize item (Optional): </label>
+                                </div>
+                                <div class="col-4 shop-quantity">
+                                    <span class="sign minus">-</span>
+                                    <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity"
+                                           value="1">
+                                    <span class="sign plus">+</span>
+                                </div>
+                                <input class="col-5 btn btn-secondary-classic" type="submit" value="Add To Cart">
+                                <x-input-error :messages="$errors->get('cart')" class="mt-2"/>
+                            </form>
+                            @endauth
                         </div>
+
+                        @if(Session::get('item_added') === true)
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                The item was added in cart! <a href="#" onclick="document.getElementById('nav-cart-icon').click()">click here</a> to open the cart!
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
 
                         <hr class="my-4">
 
@@ -210,7 +235,6 @@
                     <p class="text-info small">More items like you were exploring similar to your taste</p>
 
                     <div class="owl-carousel p-4 ">
-
                         <!--Items-->
                         @foreach($relatedCatalogs as $relatedCatalog)
                             <x-catalog :catalog="$relatedCatalog"/>

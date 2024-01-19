@@ -21,6 +21,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::post('/register', [HomeController::class, 'register'])->name('register');
 
+Route::get('/login', [HomeController::class, 'index']);
 Route::post('/login', [HomeController::class, 'login'])->name('login');
 
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
@@ -31,13 +32,6 @@ Route::get('/about', function () {
 
 Route::get('/browse', [BrowseController::class, 'show'])->name('browse');
 
-Route::get('/cart/checkout', function () {
-    return view('cart/cart-checkout');
-})->name('checkout');
-
-Route::get('/cart/complete', function () {
-    return view('cart/cart-complete');
-})->name('purchase');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -53,6 +47,8 @@ Route::get('/igi', function () {
 
 Route::get('/catalog/{product_code}', [CatalogController::class, 'show'])->name('catalog');
 
+Route::post('/catalog/{product_code}', [CatalogController::class, 'addToCart'])->name('addToCart');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -61,6 +57,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/cart/checkout', function () {
+        return view('cart/cart-checkout');
+    })->name('checkout');
+
+    Route::get('/cart/complete', function () {
+        return view('cart/cart-complete');
+    })->name('purchase');
+
 });
+
+
 
 require __DIR__.'/auth.php';

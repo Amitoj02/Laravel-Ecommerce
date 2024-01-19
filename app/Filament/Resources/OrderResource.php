@@ -106,16 +106,6 @@ class OrderResource extends Resource
                                 ->maxLength(50),
                         ])->columns(2),
                     Wizard\Step::make('Order Items')
-                        ->afterValidation(function (Set $set, Get $get) {
-                            $total_price = 0;
-                            $total_quantity = 0;
-                            foreach($get('cartItems') as $cartItem) {
-                                $total_price += $cartItem['total_price'];
-                                $total_quantity += $cartItem['quantity'];
-                            }
-                            $set('total_price', $total_price);
-                            $set('total_items', $total_quantity);
-                        })
                         ->schema([
                             Repeater::make('cartItems')
                                 ->relationship()
@@ -124,66 +114,24 @@ class OrderResource extends Resource
                                 ->reorderable(true)
                                 ->minItems(1)
                                 ->schema([
-                                    Select::make('catalog_id')
-                                        ->label('Catalog Item')
-                                        ->relationship(name: 'catalog', titleAttribute: 'title')
-                                        ->searchable()
-                                        ->preload()
-                                        ->required()
+                                    Grid::make('item')->schema([
+                                        Select::make('catalog_id')
+                                            ->label('Catalog Item')
+                                            ->relationship(name: 'catalog', titleAttribute: 'title')
+                                            ->searchable()
+                                            ->preload()
+                                            ->required(),
+                                        TextInput::make('quantity')
+                                            ->numeric()
+                                            ->required()
+                                            ->default(1),
+                                    ])->columns(2),
+                                    Textarea::make('message')
+                                        ->label('Message (Optional)')
                                         ->columnSpanFull()
-                                        ->live()
-                                        ->afterStateUpdated(function (Select $component, Set $set, Get $get) {
-                                            $model = $component->getSelectedRecord();
-                                            $set('unit_price', $model->price);
-                                            $set('total_price', $model->price * (int)$get('quantity'));
-                                        }),
-                                    TextInput::make('unit_price')
-                                        ->numeric()
-                                        ->prefixIcon('heroicon-m-currency-rupee')
-                                        ->afterStateUpdated(fn (Set $set, ?int $state, Get $get) => $set('total_price', (int)$get('quantity') * (float)$state))
-                                        ->debounce(600)
-                                        ->default(0)
-                                        ->required(),
-                                    TextInput::make('quantity')
-                                        ->numeric()
-                                        ->required()
-                                        ->helperText(str('This quantity will not effect the inventory of the products!')->markdown()->toHtmlString())
-                                        ->afterStateUpdated(fn (Set $set, ?int $state, Get $get) => $set('total_price', (int)$state * (float)$get('unit_price')))
-                                        ->debounce(600)
-                                        ->default(1),
-                                    TextInput::make('total_price')
-                                        ->numeric()
-                                        ->required()
-                                        ->disabled()
-                                        ->dehydrated()
-                                        ->prefixIcon('heroicon-m-currency-rupee')
-                                        ->default(0)
                                 ])
                                 ->columns(3),
                         ]),
-                    Wizard\Step::make('Summary')
-                        ->schema([
-                            Grid::make()
-                                ->columns(2)
-                                ->schema([
-                                    TextInput::make('total_items')
-                                        ->label('Order\'s total items')
-                                        ->numeric()
-                                        ->required()
-                                        ->disabled()
-                                        ->dehydrated()
-                                        ->prefixIcon('heroicon-m-archive-box')
-                                        ->default(0),
-                                    TextInput::make('total_price')
-                                        ->label('Order\'s total price')
-                                        ->numeric()
-                                        ->required()
-                                        ->disabled()
-                                        ->dehydrated()
-                                        ->prefixIcon('heroicon-m-currency-rupee')
-                                        ->default(0)
-                                ]),
-                        ])
                 ])
                     ->columnSpanFull(),
             ]);
