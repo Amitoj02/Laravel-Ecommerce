@@ -37,7 +37,7 @@ class QuoteController extends Controller
             'recipient_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone_number' => ['required', 'numeric', 'max_digits:10'],
-            'message' => ['string', 'max:2000'],
+            'message' => ['nullable', 'string', 'max:2000'],
             'address_street' => ['nullable', 'string', 'max:70'],
             'address_city' => ['nullable', 'string', 'max:50'],
             'address_state' => ['nullable', 'string', 'max:50'],
@@ -66,7 +66,7 @@ class QuoteController extends Controller
             ->whereNull('order_id')
             ->update(['order_id' => $order_id]);
 
-        return redirect()->route('quote-complete', ['order_id', $order_id]);
+        return redirect()->route('quote-complete', ['order_id' => $order_id]);
     }
 
     public function complete($order_id)

@@ -33,8 +33,8 @@
                 <div class="border border-1 border-black rounded-1 text-start p-4 mb-4 bg-white">
                     <p class="fs-5">Message (Optional)</p>
                     <textarea type="text" class="form-control mb-3" id="txt_message" name="message"
-                              placeholder="Write your message here..." style="height:150px;">{{ old('notes') }}</textarea>
-                    <x-input-error :messages="$errors->get('notes')" class="mt-2" />
+                              placeholder="Write your message here..." style="height:150px;">{{ old('message') }}</textarea>
+                    <x-input-error :messages="$errors->get('message')" class="mt-2" />
                 </div>
 
                 <div class="border border-1 border-black rounded-1 text-start p-4 mb-4 bg-white">
