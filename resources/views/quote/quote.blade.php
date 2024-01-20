@@ -19,18 +19,18 @@
                         <p class="step-title">Shopping Cart</p>
                     </a>
 
-                    <a class="col-3 step d-flex text-decoration-none" >
+                    <a class="col-3 step {{ Request::is('quote/details') ? 'step-active' : '' }} d-flex text-decoration-none" >
                         <div class="step-num">
                             <p>2</p>
                         </div>
-                        <p class="step-title">Checkout Details</p>
+                        <p class="step-title">Quote Details</p>
                     </a>
 
-                    <a class="col-3 step step-active disabled d-flex text-decoration-none">
+                    <a class="col-3 step  {{ Request::is('quote/complete') ? 'step-active' : 'disabled' }} d-flex text-decoration-none">
                         <div class="step-num">
                             <p>3</p>
                         </div>
-                        <p class="step-title">Order Complete</p>
+                        <p class="step-title">Complete</p>
                     </a>
                 </div>
 

@@ -31,7 +31,7 @@
 
             <hr>
             <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                <a wire:loading.class="disabled" href="{{ route('checkout') }}" class="btn btn-outline-secondary mx-2 px-4 rounded-5" type="button">Get Quote</a>
+                <a wire:loading.class="disabled" href="{{ route('quote-details') }}" class="btn btn-outline-secondary mx-2 px-4 rounded-5" type="button">Get Quote</a>
             </div>
 
 

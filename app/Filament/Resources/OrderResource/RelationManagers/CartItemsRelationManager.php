@@ -34,8 +34,6 @@ class CartItemsRelationManager extends RelationManager
             ->schema([
                 TextEntry::make('catalog_id'),
                 TextEntry::make('catalog.title'),
-                TextEntry::make('total_price')
-                    ->money('inr'),
             ]);
     }
 
@@ -45,19 +43,12 @@ class CartItemsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('catalog_id')
             ->columns([
+
                 Tables\Columns\TextColumn::make('product_name')
-                    ->description(fn(CartItem $model) => $model->catalog->product_code )
-                    ->state(fn(CartItem $model) => $model->catalog->title ),
-                Tables\Columns\TextColumn::make('quantity'),
-                Tables\Columns\TextColumn::make('total_price')
-                    ->label('Total price')
-                    ->money('inr')
-                    ->description(function(CartItem $model){
-                        if ($model->quantity > 1) {
-                            return ' (₹'.$model->catalog->price.' x '.$model->quantity.')';
-                        }
-                        return null;
-                    })
+                    ->state(fn(CartItem $model) => $model->catalog->title),
+
+                Tables\Columns\TextColumn::make('product_code')
+                    ->state(fn(CartItem $model) => $model->catalog->product_code)
 
             ])
             ->filters([

@@ -39,6 +39,9 @@ class UserResource extends Resource
                         ->maxLength(100)
                         ->required(),
 
+                    TextInput::make('surname')
+                        ->maxLength(100),
+
                     TextInput::make('email')
                         ->maxLength(60)
                         ->required()

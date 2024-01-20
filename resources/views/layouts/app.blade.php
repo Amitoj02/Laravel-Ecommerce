@@ -91,15 +91,16 @@
                                 @auth
                                     <a class="nav-icon" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i data-feather="user"></i></a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a></li>
-                                        <li><a class="dropdown-item" href="#"><i data-feather="package"></i> Orders</a></li>
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal-account-settings" id="nav-account-settings"><i data-feather="user"></i> Account</a></li>
+                                        @if(Auth::user()->is_admin === true)
+                                            <li><a class="dropdown-item" href="{{asset('admin')}}"><i data-feather="grid"></i> Admin Dashboard</a></li>
+                                        @endif
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="{{ route('logout') }}"><i data-feather="log-out"></i> Logout</a></li>
                                     </ul>
                                 @endauth
                                 @guest
-                                    <a class="nav-icon" href="#" data-bs-toggle="modal"
-                                       data-bs-target="#modal-login" id="nav-profile-icon"><i data-feather="user"></i></a>
+                                    <a class="nav-icon" href="#" data-bs-toggle="modal" data-bs-target="#modal-login" id="nav-profile-icon"><i data-feather="user"></i></a>
                                 @endguest
                                 </li>
 
@@ -191,7 +192,7 @@
                                                 <x-input-error :messages="$errors->register->get('name')" class="mt-2" />
                                             </div>
                                             <div class="col form-floating my-2">
-                                                <x-text-input type="text" class="form-control" id="c_surname" name="surname" placeholder="Surname"/>
+                                                <x-text-input type="text" class="form-control" id="c_surname" name="surname" :value="old('surname')" placeholder="Surname"/>
                                                 <label for="c_surname" class="ms-2">Surname</label>
                                                 <x-input-error :messages="$errors->register->get('surname')" class="mt-2" />
                                             </div>

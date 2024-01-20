@@ -18,17 +18,6 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="carousel-item">
-                    <div class="container text-center w-30">
-                        <img class="d-block m-auto p-5" style="height:250px;width:250px;"
-                             src="{{ asset('assets/catalogs/item3.png') }}" alt="Item 1">
-                        <h3 class="under-border mb-3">Gold Engagement Ring</h3>
-                        <h5>Rs 30,000</h5>
-                        <p style="color:var(--bs-secondary); opacity:0.7;"><small>This is our new best
-                                collection of engagement ring for newely wed couples</small></p>
-                        <button type="button" class="btn btn-primary mt-3">View Details</button>
-                    </div>
-                </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#main-slider"
                     data-bs-slide="prev">

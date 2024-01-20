@@ -84,26 +84,15 @@ class OrderResource extends Resource
                                 ->numeric()
                                 ->prefix('+91')
                                 ->required(),
-                            Select::make('status')
-                                ->options([
-                                    'new' => 'New',
-                                    'processing' => 'Processing',
-                                    'shipped' => 'Shipped',
-                                    'delivered' => 'Delivered',
-                                    'cancelled' => 'Cancelled'
-                                ])
-                                ->default('new')
-                                ->required()
-                                ->native(false),
+                            TextInput::make('email')
+                                ->maxLength(60)
+                                ->required(),
                             Textarea::make('address')
                                 ->maxLength(500)
                                 ->required(),
-                            Textarea::make('notes')
-                                ->label('Notes (Optional)')
-                                ->maxLength(500),
-                            TextInput::make('transaction_id')
-                                ->label('Transaction ID (optional)')
-                                ->maxLength(50),
+                            Textarea::make('message')
+                                ->label('Message (Optional)')
+                                ->maxLength(2000),
                         ])->columns(2),
                     Wizard\Step::make('Order Items')
                         ->schema([
@@ -149,6 +138,7 @@ class OrderResource extends Resource
                         Infolists\Components\TextEntry::make('phone_number')
                             ->icon('heroicon-m-phone'),
                         Infolists\Components\TextEntry::make('address')
+                            ->default('(None)')
                             ->icon('heroicon-m-map-pin'),
                         Infolists\Components\TextEntry::make('customer')
                             ->state(function(Model $record): string{
@@ -165,34 +155,10 @@ class OrderResource extends Resource
                     ->schema([
                         TextEntry::make('id')
                             ->label('Order ID'),
-                        TextEntry::make('transaction_id')
-                            ->label('Transaction ID')
-                            ->default('(Not Found)')
-                            ->copyable()
-                            ->copyMessage('Copied!'),
                         TextEntry::make('created_at')
                             ->label('Ordered at')
                             ->date('d M, Y - h:i a'),
-                        TextEntry::make('status')
-                            ->badge()
-                            ->color(fn (string $state): string => match ($state) {
-                                'new', 'processing' => 'warning',
-                                'shipped' => 'success',
-                                'delivered' => 'gray',
-                                'cancelled' => 'danger'
-                            })
-                            ->formatStateUsing(fn (string $state): string => match ($state) {
-                                'new' => 'New',
-                                'processing' => 'Processing',
-                                'shipped' => 'Shipped',
-                                'delivered' => 'Delivered',
-                                'cancelled' => 'Cancelled'
-                            }),
-                        TextEntry::make('total_price')
-                            ->weight(FontWeight::Bold)
-                            ->money('inr'),
-                        TextEntry::make('total_items'),
-                        TextEntry::make('notes')
+                        TextEntry::make('message')
                             ->default('(None)'),
                     ])
                     ->columns(2),
@@ -214,24 +180,6 @@ class OrderResource extends Resource
                 TextColumn::make('phone_number')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('total_price')
-                    ->searchable()
-                    ->money('inr')
-                    ->sortable()
-                    ->toggleable(),
-                SelectColumn::make('status')
-                    ->options([
-                        'new' => 'New',
-                        'processing' => 'Processing',
-                        'shipped' => 'Shipped',
-                        'delivered' => 'Delivered',
-                        'cancelled' => 'Cancelled'
-                    ])
-                    ->toggleable(),
-                TextColumn::make('total_items')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
                     ->label('Ordered at')
                     ->sortable()
@@ -239,16 +187,6 @@ class OrderResource extends Resource
                     ->toggleable(),
             ])
             ->filters([
-                SelectFilter::make('status')
-                    ->options([
-                        'new' => 'New',
-                        'processing' => 'Warning',
-                        'shipped' => 'Shipped',
-                        'delivered' => 'Delivered',
-                        'cancelled' => 'Cancelled'
-                    ])
-                    ->multiple()
-                    ->native(false),
                 Filter::make('created_at')
                     ->form([
                         DatePicker::make('orders_from'),

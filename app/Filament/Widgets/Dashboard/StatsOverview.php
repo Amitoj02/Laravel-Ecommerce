@@ -11,8 +11,7 @@ class StatsOverview extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('New Orders', DB::table('orders')->where('status', 'new')->count()),
-            Stat::make('Pending Orders', DB::table('orders')->where('status', 'pending')->count()),
+            Stat::make('Orders', DB::table('orders')->count()),
             Stat::make('Catalogs', DB::table('catalogs')->count()),
         ];
     }

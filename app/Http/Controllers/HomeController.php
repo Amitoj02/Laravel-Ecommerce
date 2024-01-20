@@ -50,6 +50,7 @@ class HomeController extends Controller
     {
         Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
+            'surname' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Password::defaults()],
             'address' => ['required', 'string', 'max:255'],
@@ -58,6 +59,7 @@ class HomeController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'surname' => $request->surname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'address' => $request->address,

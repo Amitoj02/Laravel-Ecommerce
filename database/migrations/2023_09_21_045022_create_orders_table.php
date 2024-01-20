@@ -16,13 +16,10 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('recipient_name');
+            $table->string('email');
             $table->string('phone_number');
-            $table->longText('address');
-            $table->longText('notes')->nullable();
-            $table->integer('total_items');
-            $table->double('total_price');
-            $table->string('transaction_id')->nullable();
-            $table->string('status');
+            $table->longText('address')->nullable();
+            $table->longText('message')->nullable();
         });
     }
 
