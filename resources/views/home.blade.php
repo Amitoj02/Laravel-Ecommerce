@@ -141,27 +141,27 @@
                 <!-- Sale banners -->
                 <div class="row mt-5">
                     <div class="col-12 col-md-6 mx-auto">
-                        <div class="sale-banner row h-100">
+                        <div class="sale-banner row my-2">
                             <div class="col-8 p-4">
                                 <h2>New Arrival</h2>
                                 <small>Discover our new arrivals and be among the first to adorn yourself with
-                                    latest trend.</small>
+                                    latest trend.</small><br>
                                 <div class="btn btn-secondary mt-2">Shop Now &gt;</div>
                             </div>
-                            <div class="col-4 p-0">
-                                <img src="{{ asset('assets/catalogs/item2.png') }}" class="img-fluid" />
+                            <div class="col-4 p-0 d-flex">
+                                <img src="{{ asset('assets/catalogs/item2.png') }}" style="object-fit: contain;" />
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-5 mx-auto my-2">
-                        <div class="sale-banner row h-100">
+                    <div class="col-12 col-md-5 mx-auto">
+                        <div class="sale-banner row my-2">
                             <div class="col-8">
                                 <h3>Women's Earrings</h3>
                                 <h2>40% OFF</h2>
                                 <div class="btn btn-secondary">Shop Now &gt;</div>
                             </div>
-                            <div class="col-4 p-0">
-                                <img src="{{ asset('assets/vector_2_lady.png') }}" class="img-fluid" />
+                            <div class="col-4 p-0 d-flex">
+                                <img src="{{ asset('assets/vector_2_lady.png') }}" style="object-fit: contain;" />
                             </div>
                         </div>
                     </div>
