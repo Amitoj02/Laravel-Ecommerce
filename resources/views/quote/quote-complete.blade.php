@@ -5,7 +5,7 @@
 
 @section('tab-content')
     <div class="row justify-content-center">
-        <div class="col-md-9 shadow bg-white rounded mt-5 p-5">
+        <div class="col-md-9 shadow bg-white rounded mt-5 px-3 py-5 px-lg-5">
             <p class="fs-4 text-info-dark mb-2">Thank You!🎉</p>
             <p class="fs-3 fw-bold mb-2">Your requirements have been received</p>
             <p class="text-info mb-5">A team member will be in contact with you regarding the quote, thank you for your patience.</p>

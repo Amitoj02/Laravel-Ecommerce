@@ -2,8 +2,8 @@
 @section('page-title', 'About - Swarn Abhishek')
 @section('header-content')
     <div class="text-center pb-5">
-        <h1 class="p-5 mt-5" style="font-size: 5rem;">Swarn Abhishek</h1>
-        <h3 class="p-5">
+        <h1 class="p-lg-5 mt-5" style="font-size: 5rem;">Swarn Abhishek</h1>
+        <h3 class="p-4 p-lg-5">
             Elevating Elegance: A Legacy of Trustworthiness,<br>Affordability, and Authencity
         </h3>
         <div class="scroll-downs mx-auto my-4">
@@ -23,10 +23,10 @@
                 <div class="row row-cols-1 row-cols-lg-2">
                     <div class="col p-lg-5 mt-5">
                         <div class="outline-img mx-auto" style="width:fit-content">
-                            <img src="{{ asset('assets/aboutus_1.png') }}" width="350px">
+                            <img src="{{ asset('assets/aboutus_1.png') }}" width="100%">
                         </div>
                     </div>
-                    <div class="col text-start p-5 my-auto">
+                    <div class="col text-start py-5 px-lg-5 my-auto">
                         <h2 class="text-primary under-border-left mb-3">Trustworthy</h2>
                         <p class="text-info">
                             Trustworthiness is the cornerstone of our brand. We prioritize transparency and integrity in every aspect of our business. To instill confidence in our customers, we go the extra mile by providing IGI certification with every jewelry piece, offering a clear and objective assurance of quality and authenticity. Our commitment to ethical sourcing, responsible practices, and the highest craftsmanship standards further underscores our dedication to trust. With every purchase, customers experience the peace of mind that comes from knowing they've chosen a brand that consistently delivers on its promises, building a foundation of trust that lasts through generations.
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="row row-cols-1 row-cols-lg-2">
-                    <div class="col text-start p-5 my-auto">
+                    <div class="col text-start py-5 px-lg-5 my-auto">
                         <h2 class="text-primary under-border-left mb-3">Affordable</h2>
                         <p class="text-info">
                             We believe that exceptional jewelry shouldn't come with an extravagant price tag. Our commitment to affordability drives us to carefully source materials and optimize our production processes to offer competitive pricing without compromising on quality. We strive to make luxury accessible to all, ensuring that everyone can indulge in the beauty and elegance of fine jewelry without breaking their budget. Our dedication to affordability isn't just a promise; it's a pledge to empower our customers to express their unique style and celebrate life's moments with exquisite jewelry that doesn't strain their finances.
@@ -43,7 +43,7 @@
                     </div>
                     <div class="col p-lg-5 mt-5">
                         <div class="outline-img-right mx-auto" style="width:fit-content">
-                            <img src="{{ asset('assets/aboutus_2.png') }}" width="350px">
+                            <img src="{{ asset('assets/aboutus_2.png') }}" width="100%">
                         </div>
                     </div>
                 </div>
@@ -51,10 +51,10 @@
                 <div class="row row-cols-1 row-cols-lg-2">
                     <div class="col p-lg-5 mt-5">
                         <div class="outline-img mx-auto" style="width:fit-content">
-                            <img src="{{ asset('assets/aboutus_1.png') }}" width="350px">
+                            <img src="{{ asset('assets/aboutus_1.png') }}" width="100%">
                         </div>
                     </div>
-                    <div class="col text-start p-5 my-auto">
+                    <div class="col text-start py-5 px-lg-5 my-auto">
                         <h2 class="text-primary under-border-left mb-3">Authentic</h2>
                         <p class="text-info">
                             We create jewelry that's not just beautiful but also true to the core. Each piece in our collection is a testament to genuine artistry, precision, and attention to detail. We don't just sell jewelry; we craft meaningful, authentic heirlooms that resonate with your unique identity. Our commitment to authenticity extends beyond design; it's a promise that every aspect of our jewelry, from materials to craftsmanship, aligns with our unwavering dedication to genuine expression. With us, you can be certain that you're acquiring jewelry that's as authentic as your individuality.

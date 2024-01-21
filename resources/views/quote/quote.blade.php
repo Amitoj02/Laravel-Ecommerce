@@ -9,24 +9,24 @@
 @section('content')
     <div class="section-leaf1">
         <div class="section-leaf2">
-            <div class="container text-center p-5 inter">
-                <h1 class="text-primary mb-5">@yield('page-header')</h1>
-                <div class="row step-wizard justify-content-center gap-5">
-                    <a class="col-3 step d-flex text-decoration-none">
+            <div class="container text-center p-4 p-lg-5 inter">
+                <h1 class="text-primary mb-4">@yield('page-header')</h1>
+                <div class="row step-wizard justify-content-center gap-lg-5">
+                    <a class="col-lg-3 step d-flex text-decoration-none my-2">
                         <div class="step-num">
                             <p>1</p>
                         </div>
                         <p class="step-title">Shopping Cart</p>
                     </a>
 
-                    <a class="col-3 step {{ Request::is('quote/details') ? 'step-active' : '' }} d-flex text-decoration-none" >
+                    <a class="col-lg-3 step {{ Request::is('quote/details') ? 'step-active' : '' }} d-flex text-decoration-none my-2" >
                         <div class="step-num">
                             <p>2</p>
                         </div>
                         <p class="step-title">Quote Details</p>
                     </a>
 
-                    <a class="col-3 step  {{ Request::is('quote/complete') ? 'step-active' : 'disabled' }} d-flex text-decoration-none">
+                    <a class="col-lg-3 step  {{ Request::is('quote/complete') ? 'step-active' : 'disabled' }} d-flex text-decoration-none my-2">
                         <div class="step-num">
                             <p>3</p>
                         </div>

@@ -173,6 +173,11 @@ input[type="search"]::-webkit-search-results-decoration {
     height: 50px;
 }
 
+.row {
+    margin-left: 0!important;
+    margin-right: 0!important;
+}
+
 
 #main-slider .carousel-control-prev {
     margin-left: 15%;
@@ -429,15 +434,30 @@ input[type="search"]::-webkit-search-results-decoration {
     border-radius: 15px;
 }
 
+
 .slider-galeria-thumbs {
     float: left;
     width: 16%;
+    display: none; /* For Small Devices */
 }
 
 .slider-galeria {
     float: left;
-    width: 84%;
+    width: 100%; /* For Small Devices */
+    display: flex;
 }
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .slider-galeria-thumbs {
+        display: flex;
+    }
+    .slider-galeria {
+        width: 84%;
+    }
+}
+
 
 .slider-galeria div,
 .slider-galeria-thumbs div {

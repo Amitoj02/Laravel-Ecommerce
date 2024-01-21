@@ -30,7 +30,7 @@
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                     <div class="container-fluid">
 
-                        <a class="navbar-brand d-lg-none" style="color:var(--bs-secondary)" href="#"><img
+                        <a class="navbar-brand d-lg-none" style="color:var(--bs-secondary)" href="{{ route('index') }}"><img
                                 src="{{ asset('assets/logo_variant1.png') }}" alt="Logo" width="70" height="70">Swaran Abhishek</a>
 
                         <div class="navbar-toggler text-secondary" type="button" data-bs-toggle="collapse"
@@ -39,11 +39,11 @@
                             <i data-feather="menu"></i>
                         </div>
 
-                        <div class="collapse navbar-collapse row ms-5 me-5" id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse row mx-5 px-lg-5" id="navbarSupportedContent">
                             <ul class="navbar-nav contain col">
                                 <li class="nav-item col">
                                     <a class="nav-link link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover {{ Request::is('/') ? 'active' : '' }}"
-                                       aria-current="page" href="{{asset('/')}}">Home</a>
+                                       aria-current="page" href="{{ route('index') }}">Home</a>
                                 </li>
 
                                 <li class="nav-item dropdown col">
@@ -61,20 +61,20 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item col">
-                                    <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="{{asset('/about')}}">About us</a>
+                                    <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="{{ route('about') }}">About us</a>
                                 </li>
                                 <li class="nav-item col">
-                                    <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="{{asset('/contact')}}">Contact</a>
+                                    <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a>
                                 </li>
                             </ul>
                             <div class="col-2 text-center d-none d-lg-block">
-                                <a href="{{asset('/')}}">
+                                <a href="{{ route('index') }}">
                                     <img src="{{ asset('assets/logo_variant1.png') }}" alt="Logo" width="128" height="128">
                                 </a>
                             </div>
                             <ul class="navbar-nav col text-center">
                                 <li class="nav-item col">
-                                    <a class="nav-link {{ Request::is('igi') ? 'active' : '' }}" href="{{asset('/igi')}}">IGI Page</a>
+                                    <a class="nav-link {{ Request::is('igi') ? 'active' : '' }}" href="{{ route('igi') }}">IGI Page</a>
                                 </li>
                                 <form class="m-auto me-2 col-5 d-none d-lg-block" action="/browse" role="search" method="get">
                                     <input class="form-control" id="searchbar" name="q" type="search" placeholder="Search"
@@ -208,10 +208,12 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-floating my-2">
-                                            <x-text-input type="text" class="form-control" id="c_address" name="address" :value="old('address')" placeholder="Address"/>
-                                            <label for="c_address" class="ms-2">Address</label>
-                                            <x-input-error :messages="$errors->register->get('address')" class="mt-2" />
+                                        <div class="row">
+                                            <div class="col form-floating my-2">
+                                                <x-text-input type="text" class="form-control" id="c_address" name="address" :value="old('address')" placeholder="Address"/>
+                                                <label for="c_address" class="ms-2">Address</label>
+                                                <x-input-error :messages="$errors->register->get('address')" class="mt-2" />
+                                            </div>
                                         </div>
 
                                         <div class="row row-cols-1 row-cols-lg-2">
@@ -251,6 +253,10 @@
                         <livewire:shopping-cart/>
                     </div>
                 </div>
+
+                <div class="position-fixed bottom-0 end-0 rounded-circle bg-primary m-4 p-3 text-white z-3 shadow" style="cursor: pointer;" onclick="document.getElementById('nav-cart-icon').click();">
+                    <i data-feather="shopping-cart" stroke-width="2"></i>
+                </div>
                 @endauth
 
                 <!-- Navbar Ends -->
@@ -266,7 +272,7 @@
 
     <!--Footer STARTS-->
     <footer class="bg-primary socials py-2 px-sm-5">
-        <div class="row row-cols-1 row-cols-md-4 mx-lg-5 px-lg-5 py-5">
+        <div class="row row-cols-1 row-cols-md-4 mx-sm-0 mx-lg-5 px-lg-5 py-5" style="margin-left:0; margin-right:0;">
             <div class="col px-5">
                 <img src="{{ asset('assets/logo.png') }}" width="150px" class="p-0">
                 <p class="text-secondary small">Shop our entire lineup of fine faves in store, get styled and join
@@ -331,11 +337,23 @@
     feather.replace({ 'stroke-width': 1 });
 </script>
 <!-- Jquery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <!-- Carousels-->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="{{ asset('js/owl-carousel/owl.carousel.min.js') }}"></script>
+
+@if(Request::is('browse'))
+    <script>
+        $(document).ready(function () {
+            // Check the screen width
+            if ($(window).width() >= 768) {
+                // Open the accordion on desktop (viewport width >= 768px)
+                $("#flush-collapseOne").show("show");
+            }
+        });
+    </script>
+@endif
+
 <!-- Custom scripts -->
 <script src="{{ asset('js/script.js')}}"></script>
 

@@ -5,7 +5,7 @@
 
 @section('tab-content')
     <div class="row mt-5 justify-content-center gap-5">
-        <div class="col-7">
+        <div class="col-lg-7">
             <form method="post" action="{{route('quote-details-submit')}}">
                 @csrf
                 <div class="border border-1 border-black rounded-1 text-start p-4 mb-4 bg-white">
@@ -78,7 +78,7 @@
             </form>
         </div>
 
-        <div class="col-4">
+        <div class="col-lg-4">
             <div class="border border-1 border-black rounded-1 text-start p-4 mb-4">
                 <p class="fs-5">Your Cart</p>
                 <div class="inter">

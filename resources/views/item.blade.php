@@ -8,9 +8,9 @@
     <!-- Info section STARTS-->
     <div class="section-leaf1">
         <div class="section-leaf2">
-            <div class="container p-5 inter">
-                <div class="row">
-                    <div class="col-6">
+            <div class="container px-lg-5 py-5 inter">
+                <div class="row row-cols-1 row-cols-lg-2">
+                    <div class="col">
                         <!--Product gallery-->
                         <div class="slider-galeria-thumbs">
                             @foreach($catalog->images as $image)
@@ -18,13 +18,14 @@
                             @endforeach
                         </div>
 
-                        <div class="slider-galeria">
+                        <div class="slider-galeria mb-5">
                             @foreach($catalog->images as $image)
                                 <div><span class="p-5"><img src="{{ asset('storage/' . $image) }}" width="100%" class="m-auto"></span></div>
                             @endforeach
                         </div>
                     </div>
-                    <div class="col-6">
+
+                    <div class="col">
                         <!--Product Titles-->
                         <p class="mb-1 fs-2">{{$catalog->title}}</p>
 {{--                        <p class="mb-1 text-info fs-5">Rs. 250,000.00</p>--}}
@@ -42,7 +43,7 @@
 
                         <p class="small">{{$catalog->introduction}}</p>
                         <br>
-                        <div class="row align-items-center pb-2">
+                        <div class="pb-2">
                             @guest
                             <div class="d-grid gap-2 col-6 mb-3">
                                 <div class="btn btn-secondary-classic mx-2 px-4" type="button" onclick="document.getElementById('nav-profile-icon').click()">Get Quote</div>
@@ -53,18 +54,20 @@
                             <form method="post" action="{{ route('addToCart', ['product_code' => $catalog->product_code]) }}">
                                 @csrf
                                 <input type="hidden" name="catalog_id" value="{{$catalog->id}}">
-                                <div class="col-9 form-floating mb-3">
-                                    <textarea class="form-control" placeholder="Leave a comment here" name="message" id="txt_comment" style="height: 100px"></textarea>
-                                    <label class="ms-2 text-info" for="txt_comment">Write message to customize item (Optional): </label>
+                                <div class="row align-items-center pe-lg-5">
+                                    <div class="col-12 form-floating mb-3">
+                                        <textarea class="form-control" placeholder="Leave a comment here" name="message" id="txt_comment" style="height: 100px"></textarea>
+                                        <label class="ms-2 text-info" for="txt_comment">Write here for customization (Optional): </label>
+                                    </div>
+                                    <div class="col-6 shop-quantity">
+                                        <span class="sign minus">-</span>
+                                        <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity"
+                                               value="1">
+                                        <span class="sign plus">+</span>
+                                    </div>
+                                    <input class="col-6 btn btn-secondary-classic" type="submit" value="Add To Cart">
+                                    <x-input-error :messages="$errors->get('cart')" class="mt-2"/>
                                 </div>
-                                <div class="col-4 shop-quantity">
-                                    <span class="sign minus">-</span>
-                                    <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity"
-                                           value="1">
-                                    <span class="sign plus">+</span>
-                                </div>
-                                <input class="col-5 btn btn-secondary-classic" type="submit" value="Add To Cart">
-                                <x-input-error :messages="$errors->get('cart')" class="mt-2"/>
                             </form>
                             @endauth
                         </div>
@@ -114,7 +117,7 @@
 
                 <hr class="mt-5 mb-4">
 
-                <div class="container px-5">
+                <div class="container px-lg-5">
                     <ul class="nav nav-pills shop-tabs justify-content-center my-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-tab-description" data-bs-toggle="pill"
@@ -151,7 +154,7 @@
 
                             <div class="row row-cols-1">
                                 <!--Review Item-->
-                                <div class="col rounded border p-3 m-3">
+                                <div class="col rounded border p-3 mx-lg-3 my-3">
                                     <div class="row">
                                         <div class="col-auto align-self-center">
                                             <img src="{{ asset('assets/sample-avatar-1.png') }}" class="rounded-circle" width="55px">
@@ -175,7 +178,7 @@
                                     <p class="">And I absolutely mean it what I said in Headline of my comment. I have been following coach.com from very long. His one article has absolutely changed my life, imagine what this book can offer to you.</p>
                                 </div>
 
-                                <div class="col rounded border p-3 m-3">
+                                <div class="col rounded border p-3 mx-lg-3 my-3">
                                     <div class="row">
                                         <div class="col-auto align-self-center">
                                             <img src="{{ asset('assets/sample-avatar-1.png') }}" class="rounded-circle" width="55px">
@@ -199,7 +202,7 @@
                                     <p class="">And I absolutely mean it what I said in Headline of my comment. I have been following coach.com from very long. His one article has absolutely changed my life, imagine what this book can offer to you.</p>
                                 </div>
 
-                                <div class="col rounded border p-3 m-3">
+                                <div class="col rounded border p-3 mx-lg-3 my-3">
                                     <div class="row">
                                         <div class="col-auto align-self-center">
                                             <img src="{{ asset('assets/sample-avatar-1.png') }}" class="rounded-circle" width="55px">

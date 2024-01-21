@@ -16,7 +16,7 @@
 {{--                <div class="alert alert-success" role="alert">--}}
 {{--                    A verification link has been sent to your email.--}}
 {{--                </div>--}}
-                
+
                 @if(Session::get('updated') === true)
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         The profile was updated!
@@ -50,10 +50,12 @@
                             <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
                         </div>
                     </div>
-                    <div class="form-floating my-2 mb-5">
-                        <input type="text" class="form-control" id="txt_address" name="address" value="{{ old('address') ? old('address') : Auth::user()->address }}" placeholder="Address">
-                        <label for="txt_address">Address</label>
-                        <x-input-error :messages="$errors->get('address')" class="mt-2" />
+                    <div class="row">
+                        <div class="col form-floating my-2 mb-5">
+                            <input type="text" class="form-control" id="txt_address" name="address" value="{{ old('address') ? old('address') : Auth::user()->address }}" placeholder="Address">
+                            <label for="txt_address">Address</label>
+                            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+                        </div>
                     </div>
                     <input class="btn btn-outline-secondary btn-lg d-grid gap-2 col-6 col-lg-4 mx-auto" type="submit" value="Update">
                 </form>

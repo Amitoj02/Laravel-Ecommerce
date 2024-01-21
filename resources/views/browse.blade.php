@@ -42,7 +42,7 @@
             <livewire:filter-catalogs/>
             <!--Filter section ENDS-->
 
-            <div class="col-9">
+            <div class="col-lg-9">
 
                 <!--Listing STARTS-->
                 <livewire:show-catalogs/>
@@ -53,3 +53,4 @@
     </div>
     <!-- Browse section ENDS-->
 @endsection
+

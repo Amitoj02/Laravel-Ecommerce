@@ -208,7 +208,7 @@
                 </div>
                 <div class="carousel-item">
                     <div class="row mx-lg-5 px-lg-5 py-2">
-                        <div class="col-md-6 col-12 my-auto">
+                        <div class="col-md-6 col-12 my-auto px-5 pt-5">
                             <h2>What our Customers Says About us</h2>
                             <br>
                             <p>“Absolutely thrilled with my purchase! Beautiful jewelry, unbeatable prices, and
@@ -224,7 +224,7 @@
                 </div>
                 <div class="carousel-item">
                     <div class="row mx-lg-5 px-lg-5 py-2">
-                        <div class="col-md-6 col-12 my-auto">
+                        <div class="col-md-6 col-12 my-auto px-5 pt-5">
                             <h2>What our Customers Says About us</h2>
                             <br>
                             <p>“Absolutely thrilled with my purchase! Beautiful jewelry, unbeatable prices, and
