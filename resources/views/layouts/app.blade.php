@@ -91,7 +91,7 @@
                                 @auth
                                     <a class="nav-icon" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i data-feather="user"></i></a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal-account-settings" id="nav-account-settings"><i data-feather="user"></i> Account</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('profile') }}"><i data-feather="user"></i> Account</a></li>
                                         @if(Auth::user()->is_admin === true)
                                             <li><a class="dropdown-item" href="{{asset('admin')}}"><i data-feather="grid"></i> Admin Dashboard</a></li>
                                         @endif
@@ -177,11 +177,8 @@
                                 </div>
                                 <div class="px-4 inter text-center">
                                     <img src="{{ asset('assets/logo_variant1_green.png') }}" width="150px" height="150px">
-                                    <p class="text-primary m-0">Create an account to view your orders, enjoy
-                                        privileges
-                                        and receive updates.</p>
-                                    <h1 class="text-primary marcellus mx-2" style="font-size: 3rem;">Create Account
-                                    </h1>
+                                    <p class="text-primary m-0">Create an account to create wishlist, request quotes and receive updates.</p>
+                                    <h1 class="text-primary marcellus mx-2" style="font-size: 3rem;">Create Account</h1>
 
                                     <form method="POST" action="{{ route('register') }}">
                                         @csrf

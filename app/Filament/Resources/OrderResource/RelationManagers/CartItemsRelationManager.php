@@ -48,8 +48,13 @@ class CartItemsRelationManager extends RelationManager
                     ->state(fn(CartItem $model) => $model->catalog->title),
 
                 Tables\Columns\TextColumn::make('product_code')
-                    ->state(fn(CartItem $model) => $model->catalog->product_code)
+                    ->state(fn(CartItem $model) => $model->catalog->product_code),
 
+                Tables\Columns\TextColumn::make('Quantity')
+                    ->state(fn(CartItem $model) => $model->quantity),
+
+                Tables\Columns\TextColumn::make('Message')
+                    ->state(fn(CartItem $model) => $model->message)
             ])
             ->filters([
                 //

@@ -53,8 +53,8 @@ class HomeController extends Controller
             'surname' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Password::defaults()],
-            'address' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required', 'numeric', 'max_digits:10']
+            'address' => ['nullable', 'string', 'max:255'],
+            'phone_number' => ['required', 'numeric', 'digits:10']
         ])->validateWithBag('register');
 
         $user = User::create([

@@ -33,7 +33,6 @@ Route::get('/about', function () {
 
 Route::get('/browse', [BrowseController::class, 'show'])->name('browse');
 
-
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
@@ -55,9 +54,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile-update');
 
     Route::get('/quote/details', [QuoteController::class, 'details'])->name('quote-details');
     Route::post('/quote/details', [QuoteController::class, 'submit'])->name('quote-details-submit');

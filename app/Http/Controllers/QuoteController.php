@@ -36,7 +36,7 @@ class QuoteController extends Controller
         $request->validate([
             'recipient_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'phone_number' => ['required', 'numeric', 'max_digits:10'],
+            'phone_number' => ['required', 'numeric', 'digits:10'],
             'message' => ['nullable', 'string', 'max:2000'],
             'address_street' => ['nullable', 'string', 'max:70'],
             'address_city' => ['nullable', 'string', 'max:50'],
