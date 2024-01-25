@@ -6,7 +6,7 @@ An e-commerce application based on Laravel + Livewire and Filament. The frontend
 
 ## Features
 
-**Customer End:**
+#### Customer End:
 - Store Introduction and FAQs
 - Product Sections (Best Seller, New Items, Related Items)
 - Product listing (Dynamic Filters, Dynamic Pagination, Search Query)
@@ -16,7 +16,7 @@ An e-commerce application based on Laravel + Livewire and Filament. The frontend
 - Product Reviews **(Coming Soon)**
 - Product Metadata **(Coming Soon)**
 - Wishlist **(Coming Soon)**
-**Owner End (Admin Dashboard):**
+#### Owner End (Admin Dashboard):
 - Overview order and customer stats
 - Manage Products and Categories
 - Manage Customers
