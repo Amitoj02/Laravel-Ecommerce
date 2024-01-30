@@ -75,3 +75,11 @@ function checkOverflow(divElement) {
         element.classList.remove('overflowing');
     }
 }
+
+function showRegister() {
+    document.getElementById('text-create-account').click();
+}
+function showLogin() {
+    document.getElementById('nav-profile-icon').click();
+}
+

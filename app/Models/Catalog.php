@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Catalog extends Model
 {
@@ -46,5 +48,29 @@ class Catalog extends Model
 
     public function orders(): HasManyThrough {
         return $this->hasManyThrough(Order::class, CartItem::class);
+    }
+
+    public function wishlisted(): HasOne
+    {
+        return $this->hasMany(Wishlist::class)->one()->where('user_id', auth()->id());
+    }
+
+    public function isWishlisted() {
+        return $this->wishlisted()->exists();
+    }
+
+    public function addWishlist() {
+        if(!$this->isWishlisted()) {
+            Wishlist::create([
+                'catalog_id' => $this->id,
+                'user_id' => auth()->id()
+            ]);
+        }
+    }
+
+    public function removeWishlist() {
+        if($this->isWishlisted()) {
+            $this->wishlisted()->delete();
+        }
     }
 }
