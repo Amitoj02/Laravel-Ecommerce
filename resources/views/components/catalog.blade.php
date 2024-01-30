@@ -1,8 +1,25 @@
-<a href="{{route('catalog', ['product_code' => $catalog->product_code])}}" onmouseover="checkOverflow(this)" class="d-block text-decoration-none item-card text-center bg-white my-3">
+{{--By Default, the catalog view will be built for listings,
+    it needs to be specifically mentioned if the view is for
+    carousel--}}
+@props ([
+    'is_carousel' => true
+])
+
+
+<a href="{{route('catalog', ['product_code' => $catalog->product_code])}}" onmouseover="checkOverflow(this)"
+    @class([
+        'd-block',
+        'text-decoration-none',
+        'item-card',
+        'text-center',
+        'bg-white',
+        'my-3',
+        'col-lg-3' => !$is_carousel
+    ]) >
     <div class="bg-secondary p-2">
         <div class="d-flex text-primary">
-            <div class="me-auto"><i data-feather="heart"></i></div>
-            <div class="ms-auto"><i data-feather="shopping-bag"></i></div>
+            <div class="ms-auto"><i data-feather="heart"></i></div>
+{{--            <div class="ms-auto"><i data-feather="shopping-bag"></i></div>--}}
         </div>
         <img src="{{ asset( 'storage/'.$catalog->banner ) }}" class="mx-auto mb-3"
              style="width:150px;height:150px;" alt="" srcset="">
