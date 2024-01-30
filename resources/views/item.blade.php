@@ -27,8 +27,11 @@
 
                     <div class="col">
                         <!--Product Titles-->
-                        <p class="mb-1 fs-2">{{$catalog->title}}</p>
-{{--                        <p class="mb-1 text-info fs-5">Rs. 250,000.00</p>--}}
+                        <div class="d-flex text-primary px-2">
+                            <p class="fs-2 mb-0">{{$catalog->title}}</p>
+                            <livewire:wishlist-catalog :$catalog/>
+                        </div>
+
                         <div class="d-flex">
                             <div class="p-2 fs-5" style="color:#FFC700;">
                                 <i class="fa fa-star"></i>
@@ -41,8 +44,7 @@
                             <p class="text-info mx-0 my-auto small p-2">5 Customer Review</p>
                         </div>
 
-                        <p class="small">{{$catalog->introduction}}</p>
-                        <br>
+                        <p class="small p-2">{{$catalog->introduction}}</p>
                         <div class="pb-2">
                             @guest
                             <div class="d-grid gap-2 col-6 mb-3">
@@ -51,15 +53,15 @@
                             @endguest
 
                             @auth
-                            <form method="post" action="{{ route('addToCart', ['product_code' => $catalog->product_code]) }}">
+                            <form method="post" action="{{ route('addToCart', ['product_code' => $catalog->product_code]) }}" class="px-2">
                                 @csrf
                                 <input type="hidden" name="catalog_id" value="{{$catalog->id}}">
-                                <div class="row align-items-center pe-lg-5">
-                                    <div class="col-12 form-floating mb-3">
-                                        <textarea class="form-control" placeholder="Leave a comment here" name="message" id="txt_comment" style="height: 100px"></textarea>
-                                        <label class="ms-2 text-info" for="txt_comment">Write here for customization (Optional): </label>
-                                    </div>
-                                    <div class="col-6 shop-quantity">
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" placeholder="Leave a comment here" name="message" id="txt_comment" style="height: 100px"></textarea>
+                                    <label class=" text-info" for="txt_comment">Write here for customization (Optional): </label>
+                                </div>
+                                <div class="row align-items-center">
+                                    <div class="col-6 shop-quantity p-0 pe-3">
                                         <span class="sign minus">-</span>
                                         <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity"
                                                value="1">

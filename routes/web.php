@@ -5,6 +5,7 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,7 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/browse', [BrowseController::class, 'show'])->name('browse');
+Route::get('/wishlist', [WishlistController::class, 'show'])->name('wishlist');
 
 Route::get('/contact', function () {
     return view('contact');

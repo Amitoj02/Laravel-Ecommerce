@@ -83,7 +83,7 @@
 
                                 @auth
                                 <li class="col">
-                                    <a class="nav-icon" href="#"><i data-feather="heart"></i></a>
+                                    <a class="nav-icon" href="{{ route('wishlist') }}"><i data-feather="heart"></i></a>
                                 </li>
                                 @endauth
 

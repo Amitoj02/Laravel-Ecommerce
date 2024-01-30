@@ -1,4 +1,4 @@
-<div class="ms-auto">
+<div class="ms-auto my-auto">
 
     @auth
         @if($catalog->isWishlisted())
