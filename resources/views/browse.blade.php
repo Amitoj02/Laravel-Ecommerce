@@ -39,7 +39,22 @@
     <div class="section-leaf2">
         <div class="row mx-5 p-5 inter">
             <!--Filter section STARTS-->
-            <livewire:filter-catalogs/>
+            <div class="col-lg-3 mb-3" >
+                <div class="accordion" id="accordianFilter">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                Filter
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordianFilter">
+                            <livewire:filter-catalogs/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
             <!--Filter section ENDS-->
 
             <div class="col-lg-9">
