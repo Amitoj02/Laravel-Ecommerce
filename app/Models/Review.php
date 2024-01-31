@@ -15,4 +15,9 @@ class Review extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function catalog(): BelongsTo
+    {
+        return $this->belongsTo(Catalog::class);
+    }
 }

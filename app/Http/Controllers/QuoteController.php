@@ -72,7 +72,6 @@ class QuoteController extends Controller
             ->update(['order_id' => $order->id]);
 
         $admins = User::query()->where('is_admin', 'LIKE', true)->get();
-
         Notification::send($admins, new QuoteCompleted($order));
 
 //        Notification::make()

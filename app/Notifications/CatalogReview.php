@@ -2,28 +2,27 @@
 
 namespace App\Notifications;
 
+use App\Filament\Resources\CatalogResource;
 use App\Filament\Resources\OrderResource;
-use App\Models\Order;
+use App\Models\Review;
 use Filament\Notifications\Actions\Action;
+use Filament\Notifications\Notification as FilamentNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Filament\Notifications\Notification as FilamentNotification;
 
-
-class QuoteCompleted extends Notification
+class CatalogReview extends Notification
 {
     use Queueable;
-
-    private Order $order;
-
+    private Review $review;
     /**
      * Create a new notification instance.
      */
-    public function __construct(Order $order)
+    public function __construct(Review $review)
     {
-        $this->order = $order;
+        $this->review = $review;
+        //
     }
 
     /**
@@ -56,14 +55,13 @@ class QuoteCompleted extends Notification
     public function toArray(object $notifiable): array
     {
         return FilamentNotification::make()
-            ->title('New Quote')
-            ->icon('heroicon-o-shopping-bag')
-            ->body("{$this->order->user->name} requested new quote.")
+            ->title('New Customer Review')
+            ->icon('heroicon-o-star')
+            ->body("{$this->review->user->name} rated {$this->review->star} stars to a product.")
             ->actions([
                 Action::make('View')
-                    ->url(OrderResource::getUrl('view', ['record' => $this->order])),
+                    ->url(CatalogResource::getUrl('view', ['record' => $this->review->catalog])),
             ])
             ->getDatabaseMessage();
     }
-
 }

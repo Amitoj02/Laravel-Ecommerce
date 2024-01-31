@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\CartItem;
 use App\Models\Catalog;
 use App\Models\Review;
+use App\Models\User;
+use App\Notifications\CatalogReview;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
 class CatalogController extends Controller
@@ -67,16 +70,19 @@ class CatalogController extends Controller
             'catalog_id' => ['exists:catalogs,id']
         ])->validateWithBag('review');
 
-        if(Review::where('catalog_id', $request->catalog_id)->where('user_id', auth()->id())->exists()) {
-            //Review exists, update only
-            $review = Review::where('catalog_id', $request->catalog_id)
-                        ->where('user_id', auth()->id())
-                        ->update([
-                            'title' => $request->title,
-                            'message' => $request->message,
-                            'star' => $request->star,
-                        ]);
+        $review = Review::query()->where('catalog_id', $request->catalog_id)->where('user_id', auth()->id());
 
+        if($review->exists()) {
+//            $review->title = $request->title;
+//            $review->message = $request->message;
+//            $review->star = $request->star;
+            $review->update([
+                'title' => $request->title,
+                'message' => $request->message,
+                'star' => $request->star,
+            ]);
+
+            $review = $review->first();
 
         } else {
             //Review dont exists
@@ -88,6 +94,9 @@ class CatalogController extends Controller
                 'user_id' => auth()->id()
             ]);
         }
+
+        $admins = User::query()->where('is_admin', 'LIKE', true)->get();
+        Notification::send($admins, new CatalogReview($review));
 
         return redirect()->back()->with( ['review_added' => true] );
     }
