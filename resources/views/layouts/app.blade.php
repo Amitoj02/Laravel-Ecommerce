@@ -233,7 +233,7 @@
 
                                         <div class="text-start my-3">
                                             By continuing, you agree to Swarn Abhishek's <a class="text-primary"
-                                                                                            href="#">Terms & Conditions & Privacy policy</a>
+                                                                                            href="{{ route('terms-conditions') }}" target="_blank">Terms & Conditions</a> & <a class="text-primary" href="{{ route('privacy-policy') }}" target="_blank">Privacy policy</a>
                                         </div>
 
                                         <div class="d-grid">
@@ -284,8 +284,8 @@
                 <div class="socials">
                     <a href="#" class="p-1"><i data-feather="twitter"></i></a>
                     <a href="#" class="p-1"><i data-feather="facebook"></i></a>
-                    <a href="#" class="p-1"><i data-feather="instagram"></i></a>
-                    <a href="#" class="p-1"><i data-feather="youtube"></i></a>
+                    <a href="https://www.instagram.com/padamdiamonds/" target="_blank" class="p-1"><i data-feather="instagram"></i></a>
+                    <a href="https://www.youtube.com/@SwarnAbhishek" target="_blank" class="p-1"><i data-feather="youtube"></i></a>
                 </div>
             </div>
 
