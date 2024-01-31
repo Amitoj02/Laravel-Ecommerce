@@ -66,7 +66,7 @@ class OrderResource extends Resource
                                 ->label('Customer Email')
                                 ->relationship(name: 'user', titleAttribute: 'email')
                                 ->searchable()
-                                ->preload()
+//                                ->preload()
                                 ->required()
                                 ->live()
                                 ->afterStateUpdated(function (Select $component, Set $set) {

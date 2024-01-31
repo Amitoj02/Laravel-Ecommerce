@@ -234,8 +234,7 @@ class CatalogResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //Since we have types field, we no longer relationManager
-            //RelationManagers\TypesRelationManager::class,
+            RelationManagers\ReviewsRelationManager::class,
         ];
     }
 
