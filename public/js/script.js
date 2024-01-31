@@ -66,6 +66,7 @@ $('.slider-galeria-thumbs').slick({
   swipeToSlide: true,
 });
 
+// For showing animation of overflowing titles in the listing
 function checkOverflow(divElement) {
 
     element = divElement.children[1].firstElementChild;
@@ -76,10 +77,26 @@ function checkOverflow(divElement) {
     }
 }
 
+// Triggers register account modal
 function showRegister() {
     document.getElementById('text-create-account').click();
 }
+
+// Triggers login account modal
 function showLogin() {
     document.getElementById('nav-profile-icon').click();
 }
 
+// Rating bar form in the catalog page
+function rb(star) {
+    ratingBar = $('#rating_bar').children();
+    ratingBar.removeClass('fa-star fa-star-o');
+    $('#form_review_star').val(star);
+    for (i = 0; i < 5; i++) {
+        if(star > i) {
+            $(ratingBar[i]).addClass('fa-star');
+        } else {
+            $(ratingBar[i]).addClass('fa-star-o');
+        }
+    }
+}

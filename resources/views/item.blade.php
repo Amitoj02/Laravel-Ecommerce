@@ -32,17 +32,20 @@
                             <livewire:wishlist-catalog :$catalog/>
                         </div>
 
-                        <div class="d-flex">
+                        <a class="d-flex text-decoration-none" href="#tabs-section" onclick="document.getElementById('pills-tab-reviews').click()">
                             <div class="p-2 fs-5" style="color:#FFC700;">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
+                                @for($i = 0; $i < 5; $i++)
+                                    @if($averageStars > $i)
+                                        <i class="fa fa-star"></i>
+                                    @else
+                                        <i class="fa fa-star-o"></i>
+                                    @endif
+                                @endfor
                             </div>
-                            <div class="vr my-1"></div>
-                            <p class="text-info mx-0 my-auto small p-2">5 Customer Review</p>
-                        </div>
+                            <div class="vr my-1 text-primary"></div>
+                            <p class="text-info mx-0 my-auto small p-2">{{ $reviews->count() }} Customer Review</p>
+
+                        </a>
 
                         <p class="small p-2">{{$catalog->introduction}}</p>
                         <div class="pb-2">
@@ -119,7 +122,7 @@
 
                 <hr class="mt-5 mb-4">
 
-                <div class="container px-lg-5">
+                <div class="container px-lg-5" id="tabs-section">
                     <ul class="nav nav-pills shop-tabs justify-content-center my-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-tab-description" data-bs-toggle="pill"
@@ -130,7 +133,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-tab-reviews" data-bs-toggle="pill"
                                     data-bs-target="#tab-reviews" type="button" role="tab" aria-controls="tab-reviews"
-                                    aria-selected="false">Reviews [5]</button>
+                                    aria-selected="false">Reviews [{{ $reviews->count() }}]</button>
                         </li>
                     </ul>
                     <div class="tab-content p-3" id="pills-tabContent">
@@ -154,79 +157,82 @@
                         <div class="tab-pane fade" id="tab-reviews" role="tabpanel"
                              aria-labelledby="pills-tab-reviews" tabindex="0">
 
-                            <div class="row row-cols-1">
-                                <!--Review Item-->
-                                <div class="col rounded border p-3 mx-lg-3 my-3">
-                                    <div class="row">
-                                        <div class="col-auto align-self-center">
-                                            <img src="{{ asset('assets/sample-avatar-1.png') }}" class="rounded-circle" width="55px">
-                                        </div>
-                                        <div class="col p-0 align-self-center">
-                                            <p class="fw-bold m-1">Amitoj Singh</p>
-                                            <p class=" text-info m-1">2 Month ago</p>
-                                        </div>
-                                    </div>
+                            <div class="row row-cols-1 justify-content-center">
 
-                                    <div class="d-flex">
-                                        <div class="p-2 fs-5" style="color:#FFC700;">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
+                                @auth
+                                <!--Review Form-->
+                                <div class="col-lg-8 rounded shadow px-3 py-3 mx-lg-3 my-3">
+                                    <div class="text-center">
+
+                                        <h3 class="text-primary mb-2">Write Review</h3>
+                                        <p class="mb-0">Please tell us about your experience with the product.</p>
+                                        <div class="p-2 fs-2" style="color:#FFC700;" id="rating_bar">
+                                            <i class="fa fa-star-o" onclick="rb(1)"></i>
+                                            <i class="fa fa-star-o" onclick="rb(2)"></i>
+                                            <i class="fa fa-star-o" onclick="rb(3)"></i>
+                                            <i class="fa fa-star-o" onclick="rb(4)"></i>
+                                            <i class="fa fa-star-o" onclick="rb(5)"></i>
                                         </div>
                                     </div>
-                                    <p class="fw-bold mb-2">Review Title Here</p>
-                                    <p class="">And I absolutely mean it what I said in Headline of my comment. I have been following coach.com from very long. His one article has absolutely changed my life, imagine what this book can offer to you.</p>
+                                    <form method="post" action="{{ route('addReview', ['product_code' => $catalog->product_code]) }}">
+                                        @csrf
+
+                                        <input type="hidden" id="form_review_star" name="star" value="5" autocomplete="off">
+                                        <input type="hidden" name="catalog_id" value="{{$catalog->id}}" autocomplete="off">
+
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="review_title" name="title" value="{{ old('title') ? old('title') : $userReview->title }}" placeholder="Review Title">
+                                            <label for="review_title">Review title</label>
+                                            <x-input-error :messages="$errors->review->get('title')" class="mt-2"/>
+                                        </div>
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Review Message" id="review_message" name="message" style="height: 100px">{{ old('message') ? old('message') : $userReview->message }}</textarea>
+                                            <label for="review_message">Review Message</label>
+                                            <x-input-error :messages="$errors->review->get('star')" class="mt-2"/>
+                                            <x-input-error :messages="$errors->review->get('message')" class="mt-2"/>
+                                        </div>
+                                        <div class="d-grid col-5 mx-auto mt-3">
+                                            <button class="btn btn-secondary-classic"><i class="fa fa-pencil-square-o"></i> Write Review</button>
+                                        </div>
+                                    </form>
                                 </div>
+                                @endauth
 
-                                <div class="col rounded border p-3 mx-lg-3 my-3">
-                                    <div class="row">
-                                        <div class="col-auto align-self-center">
-                                            <img src="{{ asset('assets/sample-avatar-1.png') }}" class="rounded-circle" width="55px">
-                                        </div>
-                                        <div class="col p-0 align-self-center">
-                                            <p class="fw-bold m-1">Amitoj Singh</p>
-                                            <p class=" text-info m-1">2 Month ago</p>
-                                        </div>
+                                @guest
+                                    <div class="alert alert-light alert-dismissible fade show" role="alert">
+                                        You will need to <a href="#" onclick="showLogin()">login</a> for writing a review.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
+                                @endguest
 
-                                    <div class="d-flex">
-                                        <div class="p-2 fs-5" style="color:#FFC700;">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
+                                @foreach($reviews as $review)
+                                    <div class="col rounded border p-3 mx-lg-3 my-3">
+                                        <div class="row">
+                                            <div class="col-auto align-self-center">
+                                                <img src="{{ asset('assets/sample-avatar.png') }}" class="rounded-circle" width="55px">
+                                            </div>
+                                            <div class="col p-0 align-self-center">
+                                                <p class="fw-bold m-1">{{ $review->user->name }}</p>
+                                                <p class="text-info m-1">{{ $review->updated_at->diffForHumans() }}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <p class="fw-bold mb-2">Review Title Here</p>
-                                    <p class="">And I absolutely mean it what I said in Headline of my comment. I have been following coach.com from very long. His one article has absolutely changed my life, imagine what this book can offer to you.</p>
-                                </div>
 
-                                <div class="col rounded border p-3 mx-lg-3 my-3">
-                                    <div class="row">
-                                        <div class="col-auto align-self-center">
-                                            <img src="{{ asset('assets/sample-avatar-1.png') }}" class="rounded-circle" width="55px">
+                                        <div class="d-flex">
+                                            <div class="p-2 fs-5" style="color:#FFC700;">
+                                                @for($i = 0; $i < 5; $i++)
+                                                    @if($review->star > $i)
+                                                        <i class="fa fa-star"></i>
+                                                    @else
+                                                        <i class="fa fa-star-o"></i>
+                                                    @endif
+                                                @endfor
+                                            </div>
                                         </div>
-                                        <div class="col p-0 align-self-center">
-                                            <p class="fw-bold m-1">Amitoj Singh</p>
-                                            <p class=" text-info m-1">2 Month ago</p>
-                                        </div>
+                                        <p class="fw-bold mb-2">{{ $review->title }}</p>
+                                        <p class="">{{ $review->message }}</p>
                                     </div>
+                                @endforeach
 
-                                    <div class="d-flex">
-                                        <div class="p-2 fs-5" style="color:#FFC700;">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <p class="fw-bold mb-2">Review Title Here</p>
-                                    <p class="">And I absolutely mean it what I said in Headline of my comment. I have been following coach.com from very long. His one article has absolutely changed my life, imagine what this book can offer to you.</p>
-                                </div>
 
                             </div>
                         </div>

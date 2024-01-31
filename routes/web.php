@@ -51,6 +51,8 @@ Route::get('/catalog/{product_code}', [CatalogController::class, 'show'])->name(
 
 Route::post('/catalog/{product_code}', [CatalogController::class, 'addToCart'])->name('addToCart');
 
+Route::post('/catalog/{product_code}/review', [CatalogController::class, 'addReview'])->name('addReview');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

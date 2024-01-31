@@ -50,6 +50,15 @@ class Catalog extends Model
         return $this->hasManyThrough(Order::class, CartItem::class);
     }
 
+    public function reviews():  HasMany {
+        return $this->hasMany(Review::class);
+    }
+
+    public function getUserReview(): HasOne
+    {
+        return $this->reviews()->one()->where('user_id', auth()->id());
+    }
+
     public function wishlisted(): HasOne
     {
         return $this->hasMany(Wishlist::class)->one()->where('user_id', auth()->id());

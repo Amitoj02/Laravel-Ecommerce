@@ -43,6 +43,10 @@ body {
     color: var(--bs-info-dark);
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 /* Navbar */
 .heropage .navbar {
     background-color: transparent !important;
@@ -581,6 +585,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .owl-carousel .item-card {
     background-color: white;
+}
+
+#rating_bar i {
+    cursor: pointer;
 }
 
 .sale-banner {
