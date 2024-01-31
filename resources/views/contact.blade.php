@@ -92,24 +92,19 @@
     <div>
         <div class="container text-center py-5 px-sm-5 info-section">
 
-            <p>V I S I T &nbsp;&nbsp; U S</p>
-            <h1 class="text-primary" style="font-size: 3rem;">At Our Store</h1>
-
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col text-start mt-5">
-                    <h2 class="text-primary">Book An<br>Appointment</h2>
-                    <p class="under-border-left"></p>
+                    <p>V I S I T &nbsp;&nbsp; U S</p>
+                    <h2 class="text-primary under-border-left mb-3"  >At Our Store</h2>
+                    {{--                    <p class="under-border-left"></p>--}}
                     <p class="text-info">
-                        Visit our store and experience the allure of fine craftsmanship in person. Explore our
-                        exquisite jewelry collections, each piece a testament to artistry and elegance. Discover the
-                        perfect jewelry piece that resonates with your style and story. Immerse yourself in a world
-                        of timeless beauty at our physical location.
+                        Visit our store and experience the allure of fine craftsmanship in person. Explore our exquisite jewelry collections, each piece a testament to artistry and elegance. Discover the perfect jewelry piece that resonates with your style and story. Immerse yourself in a world of timeless beauty at our physical location.
                     </p>
                     <div class="my-5">
-                        <b class="text-primary inter"><i class="me-2" data-feather="map-pin"
-                                                         stroke-width="2px"></i>B 67-0182, Sarafaan Bazaar, Batala-143505</b>
+                        <b class="text-primary inter"><i class="me-2" data-feather="phone" stroke-width="2px"></i>+91 98765-43210</b><br><br>
+                        <b class="text-primary inter"><i class="me-2" data-feather="map-pin" stroke-width="2px"></i>B 67-0182, Sarafaan Bazaar, Batala-143505</b>
                     </div>
-                    <button class="btn btn-outline-secondary">Directions &gt;</button>
+                    <a href="https://maps.app.goo.gl/PrZCxWQmJg747EEp7" target="_blank" class="btn btn-outline-secondary">Open in Google Maps &gt;</a>
                 </div>
                 <div class="col mt-5">
                     <img src="{{ asset('assets/map_point.png') }}" style="width:100%;">
