@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Filament\Resources\OrderResource;
 use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\User;
+use App\Notifications\QuoteCompleted;
+//use Filament\Notifications\Actions\Action;
+//use Filament\Notifications\Notification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
@@ -50,7 +55,7 @@ class QuoteController extends Controller
             $address = '';
         }
 
-        $order_id = DB::table('orders')->insertGetId([
+        $order = Order::create([
             'user_id' => Auth::id(),
             'recipient_name' => $request->recipient_name,
             'email' => $request->email,
@@ -61,12 +66,26 @@ class QuoteController extends Controller
             'updated_at' => now()
         ]);
 
-        CartItem::query()
+        $cartCount = CartItem::query()
             ->where('user_id', Auth::id())
             ->whereNull('order_id')
-            ->update(['order_id' => $order_id]);
+            ->update(['order_id' => $order->id]);
 
-        return redirect()->route('quote-complete', ['order_id' => $order_id]);
+        $admins = User::query()->where('is_admin', 'LIKE', true)->get();
+
+        Notification::send($admins, new QuoteCompleted($order));
+
+//        Notification::make()
+//            ->title('New Quote')
+//            ->icon('heroicon-o-shopping-bag')
+//            ->body("{$order->user->name} requested new quote.")
+//            ->actions([
+//                Action::make('View')
+//                    ->url(OrderResource::getUrl('view', ['record' => $order])),
+//            ])
+//            ->sendToDatabase($admins);
+
+        return redirect()->route('quote-complete', ['order_id' => $order->id]);
     }
 
     public function complete($order_id)
