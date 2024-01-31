@@ -14,6 +14,7 @@
         "filament/infolists": "^3.0-stable",
         "flowframe/laravel-trend": "^0.1.5",
         "guzzlehttp/guzzle": "^7.2",
+        "ibrahimbougaoua/filament-rating-star": "^0.0.1",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
