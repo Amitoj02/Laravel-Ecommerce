@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('page-title', 'Catalog - Swarn Abhishek')
 
-@section('header-content')
-@endsection
+{{--@section('header-content')--}}
+{{--@endsection--}}
 
 @section('content')
     <!-- Info section STARTS-->

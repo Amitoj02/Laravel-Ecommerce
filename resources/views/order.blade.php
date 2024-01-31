@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('page-title', 'Track Order - Swaran Abhishek')
 
-@section('header-content')
-@endsection
+{{--@section('header-content')--}}
+{{--@endsection--}}
 
 @section('content')
     <div class="section-leaf1">

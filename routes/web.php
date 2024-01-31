@@ -39,9 +39,13 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/order', function () {
-    return view('order');
-})->name('order');
+Route::get('/404', function () {
+    return view('errors.404');
+})->name('error-404');
+
+//Route::get('/order', function () {
+//    return view('order');
+//})->name('order');
 
 Route::get('/igi', function () {
     return view('igi');

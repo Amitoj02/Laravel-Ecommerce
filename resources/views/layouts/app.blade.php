@@ -23,8 +23,10 @@
 
     <!-- Herobox Starts-->
     <div class="heropage">
+        @hasSection('header-content')
         <div class="heropage-leaf1">
             <div class="heropage-leaf2">
+        @endif
 
                 <!--Navbar Starts-->
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -262,9 +264,10 @@
                 <!-- Navbar Ends -->
 
                 @yield('header-content')
-
+        @hasSection('header-content')
             </div>
         </div>
+        @endif
     </div>
     <!-- Herobox ends-->
 

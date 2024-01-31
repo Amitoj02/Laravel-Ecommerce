@@ -3,8 +3,8 @@
 {{--Already Done by the child sections--}}
 {{--@section('page-title', '')--}}
 
-@section('header-content')
-@endsection
+{{--@section('header-content')--}}
+{{--@endsection--}}
 
 @section('content')
     <div class="section-leaf1">

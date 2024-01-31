@@ -19,6 +19,10 @@ class CatalogController extends Controller
             ->where('visible', 'LIKE', '1')
             ->first();
 
+        if(empty($catalog)) {
+            abort(404);
+        }
+
         $relatedCatalogs = Catalog::query()
             ->where('gender', $catalog->gender)
             ->where('type_id', $catalog->type_id)
@@ -26,8 +30,13 @@ class CatalogController extends Controller
             ->take(10)
             ->get();
 
-        $reviews = $catalog->reviews()->get();
-        $averageStars = intval(round($reviews->pluck('star')->avg()));
+        $reviews = $catalog->reviews()->orderBy('updated_at', 'DESC')->get();
+        if($reviews->count() === 0) {
+            $averageStars = 5;
+        } else {
+            $averageStars = intval(round($reviews->pluck('star')->avg()));
+        }
+
 
         $userReview = new Review;
 

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('page-title', 'Wishlist - Swarn Abhishek')
 
-@section('header-content')
-@endsection
+{{--@section('header-content')--}}
+{{--@endsection--}}
 
 @section('content')
     <!-- Wishlist section STARTS-->
@@ -13,6 +13,12 @@
                     @foreach($catalogs as $catalog)
                         <x-catalog is_carousel="0" :catalog="$catalog"/>
                     @endforeach
+                    @if($catalogs->count() === 0)
+                        <div class="shadow rounded col-lg-8 p-5 bg-white text-center">
+                            <h1 class="text-primary">Empty</h1>
+                            Add items to the wishlist to be able to view them here.
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

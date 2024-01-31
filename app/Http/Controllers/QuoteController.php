@@ -80,8 +80,10 @@ class QuoteController extends Controller
             return view('quote/quote-complete', [
                 'order' => $order
             ]);
+        } else {
+            abort(404);
         }
 
-        return redirect()->route('index');
+//        return redirect()->route('index');
     }
 }
