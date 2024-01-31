@@ -46,26 +46,26 @@
                     the perfect piece to elevate their styles.</p>
 
                 <!-- Gender cards STARTS -->
-                <div class="row justify-content-evenly px-5 py-3">
-                    <div class="col-md-3 col-12 item-card">
+                <div class="row justify-content-center px-5 py-3">
+                    <div class="col-md-3 col-12 item-card mx-3">
                         <img src="{{ asset('assets/g_1.png') }}" class="w-100" alt="Men">
                         <div class="d-flex">
                             <div class="text-primary fw-bold text-start p-2">Men</div>
-                            <div class="view-more small">Explore More <i data-feather="chevron-right"></i></div>
+                            <a href="{{ route('browse').'?g[0]=Gents&g[1]=Gents' }}" class="view-more small text-primary text-decoration-none">Explore More <i data-feather="chevron-right"></i></a>
                         </div>
                     </div>
-                    <div class="col-md-3 col-12 item-card">
-                        <img src="{{ asset('assets/g_2.png') }}" class="w-100" alt="Kids">
-                        <div class="d-flex">
-                            <div class="text-primary fw-bold text-start p-2">Kids</div>
-                            <div class="view-more small">Explore More <i data-feather="chevron-right"></i></div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-12 item-card">
+{{--                    <div class="col-md-3 col-12 item-card">--}}
+{{--                        <img src="{{ asset('assets/g_2.png') }}" class="w-100" alt="Kids">--}}
+{{--                        <div class="d-flex">--}}
+{{--                            <div class="text-primary fw-bold text-start p-2">Kids</div>--}}
+{{--                            <div class="view-more small">Explore More <i data-feather="chevron-right"></i></div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+                    <div class="col-md-3 col-12 item-card mx-3">
                         <img src="{{ asset('assets/g_3.png') }}" class="w-100" alt="Women">
                         <div class="d-flex">
-                            <div class="text-primary fw-bold text-start p-2">Women</div>
-                            <div class="view-more small">Explore More <i data-feather="chevron-right"></i></div>
+                            <div class="text-primary fw-bold text-start p-2 pe-0">Women</div>
+                            <a href="{{ route('browse').'?g[0]=Ladies&g[1]=Ladies' }}" class="view-more small text-primary text-decoration-none">Explore More <i data-feather="chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
