@@ -33,9 +33,6 @@ class TypeResource extends Resource
                 Section::make()->schema([
 
                     TextInput::make('name')
-                        ->live()
-                        ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                        ->debounce(500)
                         ->required(),
 
                     FileUpload::make('image')

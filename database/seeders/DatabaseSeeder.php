@@ -34,7 +34,6 @@ class DatabaseSeeder extends Seeder
             DB::table('catalogs')->insert([
                 [
                     'title' => 'Engagement Ring ' . $i,
-                    'slug' => 'engagement-ring'. $i,
                     'introduction' => 'This is intro title',
                     'description' => 'This is description',
                     'banner' => '01HKH4BMVYVYGVPQRAHR9MEW36.png',
