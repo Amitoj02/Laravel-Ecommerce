@@ -13,14 +13,14 @@ An e-commerce application based on Laravel + Livewire and Filament. The frontend
 - Basic authentication
 - Cart System (Add `n` number of items in the cart with customization message) [Require Authentication]
 - Request Quote (Forward the cart items to the owner with customer details)
-- Product Reviews **(Coming Soon)**
+- Product Reviews
+- Wishlist
 - Product Metadata **(Coming Soon)**
-- Wishlist **(Coming Soon)**
 #### Owner End (Admin Dashboard):
 - Overview order and customer stats
 - Manage Products and Categories
 - Manage Customers
-- Receive emails regarding latest orders **(Coming Soon)**
+- Receive notification regarding latest orders **(Coming Soon)**
 
 
 ## Demo
