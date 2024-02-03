@@ -1,6 +1,20 @@
 @extends('layouts.app')
 @section('page-title', 'Swarn Abhishek')
 
+@section('meta-tags')
+    <meta name="name"        content="Swarn Abhishek">
+    <meta name="description" content="Affordable wholesale and retail jewelry for all styles.">
+    <meta name="keywords"    content="Swarn, Abhishek, Swaran Abhishek, Batala, Punjab, Jewellery, Wholesale, Retail">
+    <meta name="theme-color" content="#0A3A3A">
+
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="Swarn Abhishek">
+    <meta property="og:url"         content="{{ route('index') }} ">
+    <meta property="og:image"       content="{{ asset('assets/logo.png') }}">
+    <meta property="og:description" content="Affordable wholesale and retail jewelry for all styles.">
+
+@endsection
+
 @section('header-content')
     <!--Slides Start-->
     <div class="pb-5">
@@ -41,9 +55,9 @@
         <div class="section-leaf2">
             <div class="container text-center p-5">
                 <h2 class="text-primary">Shop by Gender</h2>
-                <p class="text-info small">Discover jewelery for every gender and age group, ensuring that everyone
+                <p class="text-info small">Discover jewellery for every gender and age group, ensuring that everyone
                     can find
-                    the perfect piece to elevate their styles.</p>
+                    the perfect piece to elevate their style.</p>
 
                 <!-- Gender cards STARTS -->
                 <div class="row justify-content-center px-5 py-3">

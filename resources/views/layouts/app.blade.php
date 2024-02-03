@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('page-title')</title>
 
+    @yield('meta-tags')
+
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -33,7 +35,7 @@
                     <div class="container-fluid">
 
                         <a class="navbar-brand d-lg-none" style="color:var(--bs-secondary)" href="{{ route('index') }}"><img
-                                src="{{ asset('assets/logo_variant1.png') }}" alt="Logo" width="70" height="70">Swaran Abhishek</a>
+                                src="{{ asset('assets/logo_variant1.png') }}" alt="Logo" width="70" height="70">Swarn Abhishek</a>
 
                         <div class="navbar-toggler text-secondary" type="button" data-bs-toggle="collapse"
                              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

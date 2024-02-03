@@ -1,5 +1,19 @@
 @extends('layouts.app')
-@section('page-title', 'Catalog - Swarn Abhishek')
+@section('page-title', 'Swarn Abhishek &bull; ' . htmlspecialchars($catalog->title))
+
+@section('meta-tags')
+    <meta name="name"        content="Swarn Abhishek &bull; {{$catalog->title}}">
+    <meta name="description" content="{{ $catalog->introduction }}">
+    <meta name="keywords"    content="Swarn, Abhishek, Swaran Abhishek, {{$catalog->title}}">
+    <meta name="theme-color" content="#0A3A3A">
+
+    <meta property="og:type"        content="article">
+    <meta property="og:title"       content="Swarn Abhishek &bull; {{$catalog->title}}">
+    <meta property="og:url"         content="{{ route('catalog', ['product_code' => $catalog->product_code]) }} ">
+    <meta property="og:image"       content="{{ asset('storage/' . $catalog->banner) }}">
+    <meta property="og:description" content="{{ $catalog->introduction }}">
+
+@endsection
 
 {{--@section('header-content')--}}
 {{--@endsection--}}
