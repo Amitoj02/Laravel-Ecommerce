@@ -98,7 +98,7 @@
                     <h2 class="text-primary under-border-left mb-3"  >At Our Store</h2>
                     {{--                    <p class="under-border-left"></p>--}}
                     <p class="text-info">
-                        Visit our store and experience the allure of fine craftsmanship in person. Explore our exquisite jewelry collections, each piece a testament to artistry and elegance. Discover the perfect jewelry piece that resonates with your style and story. Immerse yourself in a world of timeless beauty at our physical location.
+                        Visit our store and experience the allure of fine craftsmanship in person. Explore our exquisite jewellery collections, each piece a testament to artistry and elegance. Discover the perfect jewellery piece that resonates with your style and story. Immerse yourself in a world of timeless beauty at our physical location.
                     </p>
                     <div class="my-5">
                         <b class="text-primary inter"><i class="me-2" data-feather="phone" stroke-width="2px"></i>+91 98765-43210</b><br><br>

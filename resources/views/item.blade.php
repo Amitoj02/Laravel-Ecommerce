@@ -124,10 +124,9 @@
                             <tr>
                                 <td>Share</td>
                                 <td>:</td>
-                                <td class="text-black fs-5">
-                                    <i class="fa fa-facebook-square"></i>
-                                    <i class="fa fa-instagram"></i>
-                                    <i class="fa fa-whatsapp"></i>
+                                <td class="fs-5">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('catalog', ['product_code' => $catalog->product_code]) }}"><i class="fa fa-facebook-square text-black"></i></a>
+                                    <a href="https://wa.me/whatsappphonenumber?text={{ urlencode(route('catalog', ['product_code' => $catalog->product_code])) }}"><i class="fa fa-whatsapp text-black"></i></a>
                                 </td>
                             </tr>
                         </table>

@@ -3,7 +3,7 @@
 
 @section('meta-tags')
     <meta name="name"        content="Swarn Abhishek">
-    <meta name="description" content="Affordable wholesale and retail jewelry for all styles.">
+    <meta name="description" content="Affordable wholesale and retail jewellery for all styles.">
     <meta name="keywords"    content="Swarn, Abhishek, Swaran Abhishek, Batala, Punjab, Jewellery, Wholesale, Retail">
     <meta name="theme-color" content="#0A3A3A">
 
@@ -11,7 +11,7 @@
     <meta property="og:title"       content="Swarn Abhishek">
     <meta property="og:url"         content="{{ route('index') }} ">
     <meta property="og:image"       content="{{ asset('assets/logo.png') }}">
-    <meta property="og:description" content="Affordable wholesale and retail jewelry for all styles.">
+    <meta property="og:description" content="Affordable wholesale and retail jewellery for all styles.">
 
 @endsection
 
@@ -120,14 +120,14 @@
                 <br>
                 <small>
                     <b class="inter">IGI Certification</b>
-                    <p class="inter">We provide IGI certification with every jewelery piece, ensuring transparency
-                        and authencity in every purchase.</p>
+                    <p class="inter">We provide IGI certification with every jewellery piece, ensuring transparency
+                        and authenticity in every purchase.</p>
                     <b class="inter">Affordable</b>
                     <p class="inter">Affordability is at the heart of our mission. We offer stunning jewelry that
                         won't break the bank, so you can enjoy elegance without compromise.</p>
-                    <b class="inter">Custom Design</b>
-                    <p class="inter">Unlock your unique style with our design services, where your dream jewelry
-                        pieces come to life, reflecting your individually in every exquisite detail.</p>
+                    <b class="inter">Custom Designs</b>
+                    <p class="inter">Unlock your unique style with our design services, where your dream jewellery
+                        pieces come to life, reflecting your individuality in every exquisite detail.</p>
                 </small>
             </div>
         </div>
@@ -272,7 +272,7 @@
     <div class="section-artboard">
         <div class="container text-center py-2 px-sm-5 info-section">
             <h1 class="text-primary mt-5">Follow us on Instagram</h1>
-            <p class="text-info">@Swarnabhishek</p>
+            <p class="text-info">@PadamDiamonds</p>
 
             <div class="row row-cols-md-4 row-cols-sm-2 m-5">
                 <div class="col p-2">

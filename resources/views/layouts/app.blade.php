@@ -284,8 +284,6 @@
                     the Fine Crew.</p>
 
                 <div class="socials">
-                    <a href="#" class="p-1"><i data-feather="twitter"></i></a>
-                    <a href="#" class="p-1"><i data-feather="facebook"></i></a>
                     <a href="https://www.instagram.com/padamdiamonds/" target="_blank" class="p-1"><i data-feather="instagram"></i></a>
                     <a href="https://www.youtube.com/@SwarnAbhishek" target="_blank" class="p-1"><i data-feather="youtube"></i></a>
                 </div>

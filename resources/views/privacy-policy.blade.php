@@ -195,7 +195,7 @@
                     <h2 class="text-primary">Contact Us</h2>
                     <p>If you have any questions about this Privacy Policy, You can contact us:</p>
                     <ul>
-                        <li>By email: info@swarnabhishek.com</li>
+                        <li>By email: sales@swarnabhishek.com</li>
                     </ul>
                 </div>
             </div>

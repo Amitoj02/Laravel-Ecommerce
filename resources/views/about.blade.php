@@ -29,7 +29,7 @@
                     <div class="col text-start py-5 px-lg-5 my-auto">
                         <h2 class="text-primary under-border-left mb-3">Trustworthy</h2>
                         <p class="text-info">
-                            Trustworthiness is the cornerstone of our brand. We prioritize transparency and integrity in every aspect of our business. To instill confidence in our customers, we go the extra mile by providing IGI certification with every jewelry piece, offering a clear and objective assurance of quality and authenticity. Our commitment to ethical sourcing, responsible practices, and the highest craftsmanship standards further underscores our dedication to trust. With every purchase, customers experience the peace of mind that comes from knowing they've chosen a brand that consistently delivers on its promises, building a foundation of trust that lasts through generations.
+                            Trustworthiness is the cornerstone of our brand. We prioritize transparency and integrity in every aspect of our business. To instill confidence in our customers, we go the extra mile by providing IGI certification with every jewellery piece, offering a clear and objective assurance of quality and authenticity. Our commitment to ethical sourcing, responsible practices, and the highest craftsmanship standards further underscores our dedication to trust. With every purchase, customers experience the peace of mind that comes from knowing they've chosen a brand that consistently delivers on its promises, building a foundation of trust that lasts through generations.
                         </p>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <div class="col text-start py-5 px-lg-5 my-auto">
                         <h2 class="text-primary under-border-left mb-3">Affordable</h2>
                         <p class="text-info">
-                            We believe that exceptional jewelry shouldn't come with an extravagant price tag. Our commitment to affordability drives us to carefully source materials and optimize our production processes to offer competitive pricing without compromising on quality. We strive to make luxury accessible to all, ensuring that everyone can indulge in the beauty and elegance of fine jewelry without breaking their budget. Our dedication to affordability isn't just a promise; it's a pledge to empower our customers to express their unique style and celebrate life's moments with exquisite jewelry that doesn't strain their finances.
+                            We believe that exceptional jewellery shouldn't come with an extravagant price tag. Our commitment to affordability drives us to carefully source materials and optimize our production processes to offer competitive pricing without compromising on quality. We strive to make luxury accessible to all, ensuring that everyone can indulge in the beauty and elegance of fine jewellery without breaking their budget. Our dedication to affordability isn't just a promise; it's a pledge to empower our customers to express their unique style and celebrate life's moments with exquisite jewellery that doesn't strain their finances.
                         </p>
                     </div>
                     <div class="col p-lg-5 mt-5">
@@ -57,7 +57,7 @@
                     <div class="col text-start py-5 px-lg-5 my-auto">
                         <h2 class="text-primary under-border-left mb-3">Authentic</h2>
                         <p class="text-info">
-                            We create jewelry that's not just beautiful but also true to the core. Each piece in our collection is a testament to genuine artistry, precision, and attention to detail. We don't just sell jewelry; we craft meaningful, authentic heirlooms that resonate with your unique identity. Our commitment to authenticity extends beyond design; it's a promise that every aspect of our jewelry, from materials to craftsmanship, aligns with our unwavering dedication to genuine expression. With us, you can be certain that you're acquiring jewelry that's as authentic as your individuality.
+                            We create jewellery that's not just beautiful but also true to the core. Each piece in our collection is a testament to genuine artistry, precision, and attention to detail. We don't just sell jewellery; we craft meaningful, authentic heirlooms that resonate with your unique identity. Our commitment to authenticity extends beyond design; it's a promise that every aspect of our jewellery, from materials to craftsmanship, aligns with our unwavering dedication to genuine expression. With us, you can be certain that you're acquiring jewellery that's as authentic as your individuality.
                         </p>
                     </div>
                 </div>
@@ -98,10 +98,11 @@
                     <h2 class="text-primary under-border-left mb-3"  >At Our Store</h2>
 {{--                    <p class="under-border-left"></p>--}}
                     <p class="text-info">
-                        Visit our store and experience the allure of fine craftsmanship in person. Explore our exquisite jewelry collections, each piece a testament to artistry and elegance. Discover the perfect jewelry piece that resonates with your style and story. Immerse yourself in a world of timeless beauty at our physical location.
+                        Visit our store and experience the allure of fine craftsmanship in person. Explore our exquisite jewellery collections, each piece a testament to artistry and elegance. Discover the perfect jewellery piece that resonates with your style and story. Immerse yourself in a world of timeless beauty at our physical location.
                     </p>
                     <div class="my-5">
                         <b class="text-primary inter"><i class="me-2" data-feather="phone" stroke-width="2px"></i>+91 98765-43210</b><br><br>
+                        <b class="text-primary inter"><i class="me-2" data-feather="mail" stroke-width="2px"></i>sales@swarnabhishek.com</b><br><br>
                         <b class="text-primary inter"><i class="me-2" data-feather="map-pin" stroke-width="2px"></i>B 67-0182, Sarafaan Bazaar, Batala-143505</b>
                     </div>
                     <a href="https://maps.app.goo.gl/PrZCxWQmJg747EEp7" target="_blank" class="btn btn-outline-secondary">Open in Google Maps &gt;</a>
