@@ -358,7 +358,8 @@
             <hr class="mx-5 opacity-100">
         </div>
 
-        <p class="text-center small p-3">&copy; Copyright 2022, All Rights Reserved by Swarn Abhishek</p>
+        <p class="text-center small p-3 pb-2"><a href="https://www.behance.net/rohangraphix" target="_blank">Designed by <b>Rohan</b></a> | <a href="https://amitoj.dev" target="_blank">Developed by <b>Amitoj</b></a></p>
+        <p class="text-center small p-3 pt-0">&copy; Copyright {{ date('Y') }}, All Rights Reserved by <b>Swarn Abhishek</b></p>
 
     </footer>
     <!--Footer ENDS-->
