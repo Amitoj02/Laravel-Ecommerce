@@ -6,6 +6,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\WishlistController;
+use App\Mail\PhpMailerMailer;
+use App\Mail\SmtpMailer;
+use App\Models\User;
+use Illuminate\Mail\Events\MessageSent;
+use Illuminate\Mail\Events\MessageSending;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +25,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/test-email', function () {
+//    $mail = new SmtpMailer();
+//    $mail->addAddress('contact.amitoj@gmail.com');
+//    $mail->Subject = 'Sample Subject';
+//    $mail->Body = 'This is the HTML message body <b>in bold!</b>';
+//    if($mail->send()){
+//        echo 'Message has been sent';
+//    }else{
+//        echo 'Message could not be sent.';
+//        echo 'Mailer Error: ' . $mail->ErrorInfo;
+//    }
+//});
+
 /*
 |--------------------------------------------------------------------------
 | Home Controllers
@@ -26,7 +45,11 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::post('/register', [HomeController::class, 'register'])->name('register');
-Route::get('/login', [HomeController::class, 'index']);
+
+Route::get('/login', function () {
+    return redirect()->route('index')->withErrors([], 'login');
+});
+//Route::get('/login', [HomeController::class, 'index']);
 Route::post('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 
@@ -36,7 +59,7 @@ Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 |--------------------------------------------------------------------------
 */
 Route::get('/browse', [BrowseController::class, 'show'])->name('browse');
-Route::get('/wishlist', [WishlistController::class, 'show'])->name('wishlist');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -83,7 +106,7 @@ Route::get('/terms-conditions', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth','verified')->group(function () {
 
     /* Profile Controller */
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
@@ -94,6 +117,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/quote/details', [QuoteController::class, 'submit'])->name('quote-details-submit');
     Route::get('/quote/complete/{order_id}', [QuoteController::class, 'complete'])->name('quote-complete');
 
+    /* WishlistController Controllers */
+    Route::get('/wishlist', [WishlistController::class, 'show'])->name('wishlist');
 });
 
 /*

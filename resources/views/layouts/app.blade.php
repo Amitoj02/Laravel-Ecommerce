@@ -131,6 +131,10 @@
                                         aria-label="Close"></button>
                             </div>
                             <div class="px-4 inter">
+                                @if(!empty($errors->login->get('verified')))
+                                    <livewire:resend-verification :email="old('email')" :title="$errors->login->first('verified')" message="The account needs to be verified, please use verification link sent to your email to access your account."/>
+                                @endif
+
                                 <img src="{{ asset('assets/logo_variant1_green.png') }}" width="150px" height="150px">
                                 <p class="text-primary m-0">Welcome Back To</p>
                                 <h1 class="text-primary marcellus mx-2" style="font-size: 3rem;">Swarn Abhishek</h1>
@@ -142,12 +146,12 @@
                                     @csrf
                                     <div class="form-floating my-4">
                                         <x-text-input type="email" class="form-control" id="l_email" name="email" :value="old('email')" placeholder="Email Address" required/>
-                                        <label for="l_email" class="ms-2">Email Address</label>
+                                        <label for="l_email">Email Address</label>
                                         <x-input-error :messages="$errors->login->get('email')" class="mt-2" />
                                     </div>
                                     <div class="form-floating my-2">
                                         <x-text-input type="password" class="form-control" id="l_password" name="password" :value="old('password')" placeholder="Password" required/>
-                                        <label for="l_password" class="ms-2">Password</label>
+                                        <label for="l_password">Password</label>
                                         <x-input-error :messages="$errors->login->get('password')" class="mt-2" />
                                     </div>
 
@@ -162,7 +166,7 @@
                                         <input class="btn btn-secondary-classic btn-lg" type="submit" value="Submit">
                                     </div>
                                     <div class="w-100 my-2 text-center">
-                                        <a class="text-info ps-auto" href="#">Forgot Password?</a>
+                                        <a class="text-info ps-auto" href="#" data-bs-toggle="modal" data-bs-target="#modal-forgot-password" id="text-forgot-password">Forgot Password?</a>
                                     </div>
                                 </form>
                             </div>
@@ -243,6 +247,38 @@
                                         </div>
                                     </form>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Forgot Password Modal -->
+                <div class="modal fade" id="modal-forgot-password" tabindex="-1" aria-labelledby="modal-forgot-password-label"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content section-leaf3">
+                            <div class="modal-header">
+                                <h3 class="text-primary marcellus mx-2 mb-0">Forgot Password?</h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="px-4 inter">
+                                @if(Session::get('forgot_password_status'))
+                                    <p>{{ Session::get('forgot_password_status') }}</p>
+{{--                                    <livewire:resend-verification :email="old('email')" :title="$errors->login->first('verified')" message="The account needs to be verified, please use verification link sent to your email to access your account."/>--}}
+                                @else
+                                    <p class="text-primary m-2">Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
+                                @endif
+                                <form method="POST" action="{{ route('password.email') }}">
+                                    @csrf
+                                    <div class="form-floating my-4">
+                                        <x-text-input type="email" class="form-control" id="f_email" name="email" :value="old('email')" placeholder="Email Address" required/>
+                                        <label for="f_email">Email Address</label>
+                                        <x-input-error :messages="$errors->forgot_password->get('forgot_password')" />
+                                    </div>
+                                    <div class="d-grid">
+                                        <input class="btn btn-secondary-classic btn-lg" type="submit" value="Submit">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -362,11 +398,15 @@
 
 {{--If the user returns from signup error--}}
 @if($errors->hasBag('register'))
-    <script>document.getElementById('text-create-account').click();</script>
+    <script>showRegister()</script>
 @endif
 {{--If the user returns from login error--}}
 @if($errors->hasBag('login'))
-    <script>document.getElementById('nav-profile-icon').click();</script>
+    <script>showLogin()</script>
+@endif
+
+@if($errors->hasBag('forgot_password') || Session::get('forgot_password_status'))
+    <script>showForgotPassword()</script>
 @endif
 
 @livewireScripts

@@ -9,14 +9,6 @@
         <div class="section-leaf2">
             <div class="container p-5 inter">
 
-{{--                <div class="alert alert-warning" role="alert">--}}
-{{--                    Your account email is not verified, click here to resubmit the verification email.--}}
-{{--                </div>--}}
-
-{{--                <div class="alert alert-success" role="alert">--}}
-{{--                    A verification link has been sent to your email.--}}
-{{--                </div>--}}
-
                 @if(Session::get('updated') === true)
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         The profile was updated!

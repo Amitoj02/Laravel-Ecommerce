@@ -87,6 +87,10 @@ function showLogin() {
     document.getElementById('nav-profile-icon').click();
 }
 
+function showForgotPassword() {
+    document.getElementById('text-forgot-password').click();
+}
+
 // Rating bar form in the catalog page
 function rb(star) {
     ratingBar = $('#rating_bar').children();
