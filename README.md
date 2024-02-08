@@ -28,7 +28,8 @@ An e-commerce application based on Laravel + Livewire and Filament. The frontend
 The live version is available on [Coming Soon]
 ## Authors
 
-- [Amitoj Singh](https://amitoj.dev)
+- Developed by [Amitoj Singh](https://amitoj.dev)
+- Designed by [Rohan Sharma](https://www.behance.net/rohangraphix)
 
 
 ## License
