@@ -220,17 +220,17 @@ class OrderResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\Action::make('pdf')
-                    ->label('PDF')
-                    ->color('success')
-                    ->icon('heroicon-s-arrow-down-tray')
-                    ->action(function (Model $record) {
-                        return response()->streamDownload(function () use ($record) {
-                            echo Pdf::loadHtml(
-                                Blade::render('receiptpdf', ['record' => $record])
-                            )->stream();
-                        }, $record->id . '.pdf');
-                    }),
+//                Tables\Actions\Action::make('pdf')
+//                    ->label('PDF')
+//                    ->color('success')
+//                    ->icon('heroicon-s-arrow-down-tray')
+//                    ->action(function (Model $record) {
+//                        return response()->streamDownload(function () use ($record) {
+//                            echo Pdf::loadHtml(
+//                                Blade::render('receiptpdf', ['record' => $record])
+//                            )->stream();
+//                        }, $record->id . '.pdf');
+//                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
