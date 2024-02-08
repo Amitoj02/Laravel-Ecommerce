@@ -104,3 +104,21 @@ function rb(star) {
         }
     }
 }
+
+// Favicon
+onUpdate();
+
+function onUpdate() {
+    let matcher = window.matchMedia('(prefers-color-scheme: dark)');
+    let lightSchemeIcon = document.querySelector('link#light-scheme-icon');
+    let darkSchemeIcon = document.querySelector('link#dark-scheme-icon');
+
+    if (matcher.matches) {
+        lightSchemeIcon.remove();
+        document.head.append(darkSchemeIcon);
+    } else {
+        document.head.append(lightSchemeIcon);
+        darkSchemeIcon.remove();
+    }
+}
+

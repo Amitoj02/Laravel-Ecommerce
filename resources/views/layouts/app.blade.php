@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('page-title')</title>
-
+    <link rel="icon" href="{{ asset('assets/favicon-light.png') }}" id="dark-scheme-icon">
+    <link rel="icon" href="{{ asset('assets/favicon-dark.png') }}" id="light-scheme-icon">
     @yield('meta-tags')
 
     <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
