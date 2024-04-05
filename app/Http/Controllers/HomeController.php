@@ -23,6 +23,7 @@ use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Password as FascadePassword;
 use Illuminate\Validation\ValidationException;
 use PHPMailer\PHPMailer\Exception;
+use ReCaptcha\ReCaptcha;
 
 class HomeController extends Controller
 {
@@ -71,6 +72,16 @@ class HomeController extends Controller
             'phone_number' => ['required', 'numeric', 'digits:10']
         ])->validateWithBag('register');
 
+        $token = $request->input('g-recaptcha-response');
+        $recaptcha = new ReCaptcha(env('RECAPTCHA_SECRET_KEY'));
+        $response = $recaptcha->setScoreThreshold(0.5)->verify($token);
+
+        if (!$response->isSuccess()) {
+            return back()->withErrors([
+                    'email' => 'The reCaptcha was failed, please try again.',
+                ], 'register');
+        }
+
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
@@ -92,6 +103,20 @@ class HomeController extends Controller
 
     public function login(Request $request): RedirectResponse
     {
+        //Verify reCaptcha
+        $token = $request->input('g-recaptcha-response');
+        $recaptcha = new ReCaptcha(env('RECAPTCHA_SECRET_KEY'));
+        $response = $recaptcha->setScoreThreshold(0.5)->verify($token);
+
+        if (!$response->isSuccess()) {
+
+            return back()->withErrors([
+                'email' => 'The reCaptcha was failed, please try again.',
+            ], 'login')
+            ->withInput($request->only('email', 'remember'));
+
+        }
+
         //May require email, password, and (optional) remember
         if (Auth::attempt($request->only('email', 'password'), $request->input('remember'))) {
 

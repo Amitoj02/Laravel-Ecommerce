@@ -19,6 +19,9 @@
     @livewireStyles
     <!-- Custom css -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @guest
+        <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdKCbApAAAAABMKR1q2oQSRPlj53qANHHWOdKlX"></script>
+    @endguest
 </head>
 
 <body>
@@ -143,7 +146,7 @@
                                                                          data-bs-toggle="modal" data-bs-target="#modal-signup" id="text-create-account">Create an account.</a>
                                 </p>
 
-                                <form method="POST" action="{{ route('login') }}">
+                                <form id="loginForm" method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="form-floating my-4">
                                         <x-text-input type="email" class="form-control" id="l_email" name="email" :value="old('email')" placeholder="Email Address" required/>
@@ -164,7 +167,13 @@
                                     </div>
 
                                     <div class="d-grid">
-                                        <input class="btn btn-secondary-classic btn-lg" type="submit" value="Submit">
+                                        <button class="g-recaptcha btn btn-secondary-classic btn-lg"
+                                                data-sitekey="6LdKCbApAAAAABMKR1q2oQSRPlj53qANHHWOdKlX"
+                                                data-callback='submitLoginRequest'
+                                                data-action='submit'>
+                                            Submit
+                                        </button>
+{{--                                        <input class="btn btn-secondary-classic btn-lg" type="submit" value="Submit">--}}
                                     </div>
                                     <div class="w-100 my-2 text-center">
                                         <a class="text-info ps-auto" href="#" data-bs-toggle="modal" data-bs-target="#modal-forgot-password" id="text-forgot-password">Forgot Password?</a>
@@ -189,7 +198,7 @@
                                     <p class="text-primary m-0">Create an account to create wishlist, request quotes and receive updates.</p>
                                     <h1 class="text-primary marcellus mx-2" style="font-size: 3rem;">Create Account</h1>
 
-                                    <form method="POST" action="{{ route('register') }}">
+                                    <form id="registerForm" method="POST" action="{{ route('register') }}">
                                         @csrf
                                         <div class="row row-cols-1 row-cols-lg-2">
                                             <div class="col form-floating my-2">
@@ -244,7 +253,12 @@
                                         </div>
 
                                         <div class="d-grid">
-                                            <input class="btn btn-secondary-classic btn-lg" type="submit" value="Submit">
+                                            <button class="g-recaptcha btn btn-secondary-classic btn-lg"
+                                                    data-sitekey="6LdKCbApAAAAABMKR1q2oQSRPlj53qANHHWOdKlX"
+                                                    data-callback='submitRegisterRequest'
+                                                    data-action='submit'>
+                                                Submit
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -382,6 +396,43 @@
 <!-- Carousels-->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="{{ asset('js/owl-carousel/owl.carousel.min.js') }}"></script>
+
+@guest
+<script>
+    function submitRegisterRequest(token) {
+        // Get the form
+        var form = document.getElementById("registerForm");
+
+        // Create a hidden input element to hold the token
+        var tokenInput = document.createElement("input");
+        tokenInput.setAttribute("type", "hidden");
+        tokenInput.setAttribute("name", "g-recaptcha-response");
+        tokenInput.setAttribute("value", token);
+
+        // Append the hidden input to the form
+        form.appendChild(tokenInput);
+
+        // Submit the form
+        form.submit();
+    }
+    function submitLoginRequest(token) {
+        // Get the form
+        var form = document.getElementById("loginForm");
+
+        // Create a hidden input element to hold the token
+        var tokenInput = document.createElement("input");
+        tokenInput.setAttribute("type", "hidden");
+        tokenInput.setAttribute("name", "g-recaptcha-response");
+        tokenInput.setAttribute("value", token);
+
+        // Append the hidden input to the form
+        form.appendChild(tokenInput);
+
+        // Submit the form
+        form.submit();
+    }
+</script>
+@endguest
 
 @if(Request::is('browse'))
     <script>
