@@ -122,7 +122,18 @@
 
         <div class="col">
             <div class="card">
-                <img src="{{  'storage/'.$record->image }}" class="card-img-top">
+                @php
+                    // Path to your image file
+                    $imagePath = public_path('storage/'.$record->image);
+
+                    // Read image content and encode it to base64
+                    $type = pathinfo($imagePath, PATHINFO_EXTENSION);
+                    $base64Image = base64_encode(file_get_contents($imagePath));
+
+                    // Build the data URL
+                    $imageDataUrl = 'data:image/'.$type.';base64,' . $base64Image;
+                @endphp
+                <img src="{{ $imageDataUrl }}" alt="{{$imagePath}}" class="card-img-top">
                 <div class="card-body">
                     <div class="card-title text-center"><b>{{ $record->item_name. ' - '. $record->gender }}</b></div>
                     <table style="border:none; width: 100%;">
