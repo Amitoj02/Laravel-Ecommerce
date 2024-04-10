@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('catalog_id')->constrained('catalogs')->cascadeOnDelete();
             $table->integer('quantity');
             $table->longText('message')->nullable();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->foreignId('order_id')->nullable()->constrained('orders')->cascadeOnDelete();
             $table->timestamps();
         });

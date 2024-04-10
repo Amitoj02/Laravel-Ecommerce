@@ -202,7 +202,20 @@ class CatalogResource extends Resource
                     ->relationship('type', 'name')
                     ->multiple()
                     ->searchable()
-                    ->preload()
+                    ->preload(),
+                SelectFilter::make('gender')
+                    ->options([
+                        'gents' => 'Gents',
+                        'ladies' => 'Ladies',
+                    ])
+                    ->native(false),
+                SelectFilter::make('karat')
+                    ->options([
+                        '14K'=>'14K',
+                        '18K'=>'18K',
+                        '22K'=>'22K'
+                    ])
+                    ->native(false)
             ])
             ->groups([
                 //

@@ -13,6 +13,7 @@ use Filament\Forms;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -55,6 +56,7 @@ class OrderResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
+
     public static function form(Form $form): Form
     {
         return $form
@@ -75,6 +77,7 @@ class OrderResource extends Resource
                                         $set('recipient_name', $model->name);
                                         $set('phone_number', $model->phone_number);
                                         $set('address', $model->address);
+                                        $set('email', $model->email);
                                     }
                                 }),
                             TextInput::make('recipient_name')
