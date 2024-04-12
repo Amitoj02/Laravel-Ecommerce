@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'contact@amitoj.dev',
             'password' => Hash::make('Admin#2002'),
             'is_admin' => true,
+            'email_verified_at' => '2024-04-12 18:38:51',
             'address' => '123 Park, Brampton, ON - 123123',
             'phone_number' => '9876543210'
         ]);

@@ -20,10 +20,12 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\BulkAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -99,7 +101,13 @@ class InventoryResource extends Resource
                         ->keyPlaceholder('Field name')
                         ->valuePlaceholder('Field value')
                         ->reorderable()
-                    ])
+                    ]),
+                Toggle::make('in_stock')
+                    ->onColor('success')
+                    ->offColor('danger')
+                    ->onIcon('heroicon-m-check')
+                    ->offIcon('heroicon-m-x-mark')
+                    ->default(true)
             ]);
     }
 
@@ -119,7 +127,9 @@ class InventoryResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
-
+                IconColumn::make('in_stock')
+                    ->boolean()
+                    ->toggleable(),
                 TextColumn::make('gross_weight')
                     ->sortable()
                     ->suffix('g')
@@ -166,7 +176,14 @@ class InventoryResource extends Resource
                         '18K'=>'18K',
                         '22K'=>'22K'
                     ])
-                    ->native(false)
+                    ->native(false),
+                SelectFilter::make('in_stock')
+                    ->label('Stock')
+                    ->options([
+                        '1'=>'In Stock',
+                        '0'=>'Out of Stock',
+                    ])
+                    ->native(false),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

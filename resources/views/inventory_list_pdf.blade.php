@@ -28,8 +28,8 @@
         .col {
             float: left;
             box-sizing: border-box;
-            /*width: 297px;*/
-            width: 50%;
+            width: 340px;
+            /*width: 50%;*/
             margin-right: 1.5rem;
         }
         .g-4, .gy-4 {
@@ -107,6 +107,7 @@
         }
         .card-img, .card-img-bottom, .card-img-top {
             height: 150px;
+            margin-left: 62px;
             width: auto;
         }
         img, svg {
@@ -171,6 +172,16 @@
                             <td class="text-end">{{ $value }}</td>
                         </tr>
                         @endforeach
+                        <tr>
+                            <td>Status</td>
+                            <td class="text-end">
+                                @if($record->in_stock == '1')
+                                    {{ 'In stock' }}
+                                @else
+                                    {{ 'Out of stock' }}
+                                @endif
+                            </td>
+                        </tr>
                     </table>
 
                 </div>

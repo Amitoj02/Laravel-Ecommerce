@@ -22,10 +22,12 @@ class Inventory extends Model
         'diamond_weight',
         'diamond_pcs',
         'color_stone',
+        'in_stock',
         'others',
     ];
 
     protected $casts = [
         'others' => 'array',
+        'in_stock' => 'boolean'
     ];
 }
