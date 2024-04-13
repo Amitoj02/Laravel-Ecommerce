@@ -140,7 +140,6 @@ class InventoryResource extends Resource
                     ->toggleable(),
                 TextColumn::make('karat')
                     ->sortable()
-                    ->suffix('K')
                     ->toggleable(),
                 TextColumn::make('gender')
                     ->sortable()
