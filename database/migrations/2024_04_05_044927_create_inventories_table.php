@@ -24,7 +24,7 @@ return new class extends Migration
             $table->double('net_weight')->nullable();
             $table->string('karat')->nullable();
             $table->string('diamond_quality')->nullable();
-            $table->double('diamond_weight')->nullable();
+            $table->decimal('diamond_weight')->nullable();
             $table->double('diamond_pcs')->nullable();
             $table->string('color_stone')->nullable();
             $table->boolean('in_stock')->default(true);

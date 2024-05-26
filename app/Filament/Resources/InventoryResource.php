@@ -18,6 +18,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\IconColumn;
@@ -86,6 +87,7 @@ class InventoryResource extends Resource
                         TextInput::make('diamond_quality'),
                         TextInput::make('diamond_weight')
                             ->numeric()
+                            ->mask(RawJs::make('$money($input)'))
                             ->inputMode('decimal')
                             ->suffix('carat'),
                         TextInput::make('diamond_pcs')
@@ -149,7 +151,7 @@ class InventoryResource extends Resource
                     ->toggleable(),
                 TextColumn::make('diamond_weight')
                     ->sortable()
-                    ->suffix('g')
+                    ->suffix('ct')
                     ->toggleable(),
                 TextColumn::make('diamond_pcs')
                     ->sortable()
